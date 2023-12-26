@@ -1,3 +1,5 @@
+import 'package:data_structure_and_algorithm/queue/queue.dart';
+
 class TreeNode<T> {
   TreeNode(this.value);
 
@@ -20,30 +22,16 @@ class TreeNode<T> {
   }
 
   void forEachLevelOrder(void Function(TreeNode<T> node) performAction) {
-    final List<TreeNode<T>> nextLevel = [];
-    final List<TreeNode<T>> subChildren = [];
-    nextLevel.addAll(children);
-
-    void helper() {
-      for (final e in nextLevel) {
-        performAction(e);
-        subChildren.addAll(e.children);
-      }
-
-      if (subChildren.isNotEmpty) {
-        nextLevel.clear();
-        nextLevel.addAll(subChildren);
-        subChildren.clear();
-        helper();
-      }
-      return;
+    final queue = QueueStack<TreeNode<T>>();
+    performAction(this);
+    children.forEach(queue.enqueue);
+    var node = queue.dequeue();
+    while (node != null) {
+      performAction(node);
+      node.children.forEach(queue.enqueue);
+      node = queue.dequeue();
     }
-
-    helper();
   }
-
-
-
 
   @override
   String toString() {

@@ -66,7 +66,7 @@ class QueueRingBuffer<E> implements Queue<E> {
 
   @override
   bool enqueue(E element) {
-    if(_ringBuffer.isFull){
+    if (_ringBuffer.isFull) {
       return false;
     }
     _ringBuffer.write(element);
@@ -78,4 +78,50 @@ class QueueRingBuffer<E> implements Queue<E> {
 
   @override
   E? get peek => _ringBuffer.peek;
+}
+
+class QueueStack<E> implements Queue<E> {
+  final _rightStack = <E>[];
+  final _leftStack = <E>[];
+
+  @override
+  E? dequeue() {
+    if (isEmpty) return null;
+    if (_rightStack.isNotEmpty) {
+      for (int i = _rightStack.length - 1; i >= 0; i -= 1) {
+        _leftStack.add(_rightStack[i]);
+      }
+      _rightStack.clear();
+    }
+    return _leftStack.removeLast();
+  }
+
+  @override
+  bool enqueue(E element) {
+    if (_leftStack.isNotEmpty) {
+      for (int i = _leftStack.length - 1; i >= 0; i -= 1) {
+        _rightStack.add(_leftStack[i]);
+      }
+      _leftStack.clear();
+    }
+    _rightStack.add(element);
+    return true;
+  }
+
+  @override
+  bool get isEmpty => _leftStack.isEmpty && _rightStack.isEmpty;
+
+  @override
+  E? get peek => isEmpty
+      ? null
+      : (_rightStack.isNotEmpty ? _rightStack.first : _leftStack.last);
+
+  @override
+  String toString() {
+    if (isEmpty) return "Empty";
+    if (_rightStack.isNotEmpty) {
+      return '[${_rightStack.join(', ')}]';
+    }
+    return '[${_leftStack.reversed.join(', ')}]';
+  }
 }
