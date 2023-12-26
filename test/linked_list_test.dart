@@ -145,7 +145,9 @@ void main() {
       node2.next = node3;
       node3.next = node4;
       LinkedList linkedList = LinkedList<int>(head: node1, tail: node4);
+      print('Before $linkedList');
       linkedList.removeAll(2);
+      print('After $linkedList');
       expect(linkedList.length, 3);
     });
 
@@ -157,8 +159,12 @@ void main() {
       linkedList.push(1);
       linkedList.push(1);
       linkedList.push(1);
+      print('Before $linkedList');
       linkedList.removeAll(1);
-
+      print('After $linkedList');
+      expect(linkedList.length, 3);
+      expect(linkedList.head?.value, 2);
+      expect(linkedList.tail?.value, 4);
     });
 
     test('elements at random place', () {
@@ -171,8 +177,12 @@ void main() {
       linkedList.push(2);
       linkedList.push(1);
       linkedList.push(1);
+      print('Before $linkedList');
       linkedList.removeAll(1);
-
+      print('After $linkedList');
+      expect(linkedList.length, 4);
+      expect(linkedList.tail?.value, 4);
+      expect(linkedList.head?.value, 2);
     });
 
     test('multiple elements at tail', () {
@@ -182,8 +192,11 @@ void main() {
       linkedList.push(1);
       linkedList.push(3);
       linkedList.push(2);
+      print('Before $linkedList');
       linkedList.removeAll(1);
-
+      print('After $linkedList');
+      expect(linkedList.length, 2);
+      expect(linkedList.tail?.value, 3);
     });
 
 
@@ -196,15 +209,56 @@ void main() {
       linkedList.push(3);
       linkedList.push(4);
       linkedList.push(5);
-
       linkedList.removeAll(3);
       expect(linkedList.length, 4);
     });
 
     test('none element', (){
-
+      LinkedList linkedList = LinkedList<int>();
+      linkedList.push(1);
+      linkedList.push(1);
+      linkedList.push(2);
+      linkedList.push(3);
+      linkedList.push(3);
+      linkedList.push(3);
+      linkedList.push(4);
+      linkedList.push(5);
+      linkedList.removeAll(12);
+      expect(linkedList.length, 8);
     });
 
+  });
+
+  group("find middle", (){
+
+    final int middleValue = 18;
+
+    test("Empty", (){
+      final list = LinkedList<int>();
+      final found = list.findMiddle();
+      expect(found, null);
+    });
+
+    test("odd number", (){
+      final list = LinkedList<int>();
+      list.push(2);
+      list.push(2);
+      list.push(middleValue);
+      list.push(3);
+      list.push(3);
+      final found = list.findMiddle();
+      expect(found?.value, middleValue);
+    });
+
+    test("even number", (){
+      final list = LinkedList<int>();
+      list.push(2);
+      list.push(3);
+      list.push(middleValue);
+      list.push(3);
+      final found = list.findMiddle();
+      expect(found?.value, middleValue);
+    });
   });
 
 }

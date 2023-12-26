@@ -115,21 +115,36 @@ class LinkedList<E> extends Iterable<E> {
     return _LinkedListIterator(this);
   }
 
-  void removeAll(E value){
+  void removeAll(E value) {
     var current = head;
-    if(current?.value == value){
+    while (current?.value == value) {
       pop();
+      current = head;
     }
-    while(current?.value == value){}
+    while (current != null) {
+      if (current.next?.value == value) {
+        removeAfter(current);
+      } else {
+        current = current.next;
+      }
+    }
+  }
 
-    // while(current != null)
+  Node<E>? findMiddle() {
+    var slowCursor = head;
+    var fastCursor = head;
+    while (fastCursor?.next?.next != null) {
+      slowCursor = slowCursor?.next;
+      fastCursor = fastCursor?.next?.next;
+    }
+    return slowCursor;
   }
 
   @override
   int get length {
     int count = 0;
     var current = head;
-    while(current != null){
+    while (current != null) {
       count += 1;
       current = current.next;
     }
@@ -162,8 +177,24 @@ class _LinkedListIterator<E> implements Iterator<E> {
   }
 }
 
+extension ReversedLinkedList<T> on LinkedList<T> {
+  Node<T>? reverse() {
+    tail = head;
+    var prev = head;
+    var current = head?.next;
+    prev?.next = null;
+    print("current: $current");
+    while (current != null) {
+      var holder =  current.next;
+      current.next = prev;
+      prev = current;
+      current = holder;
+    }
 
-
+    head = prev;
+    return head;
+  }
+}
 
 void main() {
   final node1 = Node(value: 1);
@@ -175,13 +206,20 @@ void main() {
   // print(node1);
 
   final list = LinkedList(head: node1, tail: node3);
+  //
+  // for (final element in list) {
+  //   print(element);
+  // }
+  //
+  // final found = list.nodeAt(1);
+  // print(found);
+  // print(node2);
+  // print(found == node2);
 
-  for (final element in list) {
-    print(element);
-  }
-
-  final found = list.nodeAt(1);
-  print(found);
-  print(node2);
-  print(found == node2);
+  print("--- Before reverse ---");
+  print(list);
+  Node? head = list.reverse();
+  // print(list);
+  print("Head $head");
+  print("--- After reverse ---");
 }
