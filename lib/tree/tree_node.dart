@@ -33,9 +33,65 @@ class TreeNode<T> {
     }
   }
 
+  TreeNode<T>? depthFirstSearch(T value) {
+    TreeNode<T>? found;
+    if (this.value == value) {
+      found = this;
+      return found;
+    }
+
+    if (children.isEmpty) {
+      if (this.value == value) {
+        found = this;
+        return found;
+      }
+    }
+
+    for (final e in children) {
+      e.forEachDepthFirst((e) {
+        if (e.value == value) {
+          found = e;
+        }
+      });
+    }
+    return found;
+  }
+
+  TreeNode? levelOrderSearch(T value) {
+    TreeNode? result;
+    forEachLevelOrder((node) {
+      if (node.value == value) {
+        result = node;
+      }
+    });
+    return result;
+  }
+
   @override
   String toString() {
     return value.toString();
+  }
+}
+
+extension XTreeNode<T> on TreeNode<T> {
+  void printInLevelOrder() {
+    final List<List<T>> levels = [[]];
+    levels[0] = [value];
+
+    void helper(TreeNode<T> node, int level) {
+      if (node.children.isEmpty) {
+        return;
+      }
+      levels.add([]);
+      level += 1;
+      for (final e in node.children) {
+        helper(e, level);
+      }
+      levels[level].addAll(node.children.map((e) => e.value));
+    }
+
+    helper(this, 0);
+    print(levels.map((e) => '[${e.join(', ')}]').join('\n'));
   }
 }
 
@@ -67,14 +123,56 @@ void main() {
   soda.add(gingerAle);
   soda.add(bitterLemon);
 
+  bitterLemon.add(TreeNode("bitter lemon1"));
+  bitterLemon.add(TreeNode("bitter lemon2"));
+  bitterLemon.add(TreeNode("bitter lemon3"));
+  bitterLemon.add(TreeNode("bitter lemon4"));
+  bitterLemon.add(TreeNode("bitter lemon5"));
+  bitterLemon.add(TreeNode("bitter lemon6"));
+
   cold.add(milk);
-
-  //
-  // tree.forEachDepthFirst((node) {
-  //   print(node.toString());
-  // });
-
   tree.forEachLevelOrder((node) {
     print(node.toString());
   });
+  print("-------------");
+
+  var start = DateTime.now();
+  final result = tree.depthFirstSearch('cocoa');
+  print(result);
+  var end = DateTime.now();
+  print(
+      "depthFirstSearch ${end.microsecondsSinceEpoch - start.microsecondsSinceEpoch}");
+
+  final result2 = tree.levelOrderSearch('beverages');
+  print(result2);
+  print("-------------");
+
+  final treeInLevelOrder = printInLevelOrderInput();
+  treeInLevelOrder.printInLevelOrder();
+}
+
+TreeNode printInLevelOrderInput() {
+  final tree = TreeNode(15);
+  final tree1 = TreeNode(1);
+  tree1.children.addAll([
+    TreeNode(1),
+    TreeNode(5),
+    TreeNode(0),
+  ]);
+  final tree17 = TreeNode(17);
+  tree17.children.addAll([
+    TreeNode(2),
+  ]);
+  final tree20 = TreeNode(20);
+  tree20.children.addAll([
+    TreeNode(5)..children = [TreeNode(99)..children = [TreeNode(991)]],
+    TreeNode(7),
+  ]);
+
+  tree.children.addAll([
+    tree1,
+    tree17,
+    tree20,
+  ]);
+  return tree;
 }
