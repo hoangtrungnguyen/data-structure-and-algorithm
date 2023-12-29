@@ -84,6 +84,8 @@ class QueueStack<E> implements Queue<E> {
   final _rightStack = <E>[];
   final _leftStack = <E>[];
 
+  int get length => _leftStack.length + _rightStack.length;
+
   @override
   E? dequeue() {
     if (isEmpty) return null;

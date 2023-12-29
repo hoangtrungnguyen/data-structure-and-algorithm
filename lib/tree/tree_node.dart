@@ -165,7 +165,10 @@ TreeNode printInLevelOrderInput() {
   ]);
   final tree20 = TreeNode(20);
   tree20.children.addAll([
-    TreeNode(5)..children = [TreeNode(99)..children = [TreeNode(991)]],
+    TreeNode(5)
+      ..children = [
+        TreeNode(99)..children = [TreeNode(991)]
+      ],
     TreeNode(7),
   ]);
 
