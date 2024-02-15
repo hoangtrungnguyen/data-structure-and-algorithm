@@ -38,6 +38,8 @@ List<T?> serialize<T>(BinaryNode<T> tree) {
   return data;
 }
 
+
+
 class _Holder {
   bool addedLeft = false;
   bool addedRight = false;
@@ -105,6 +107,18 @@ class SerializeTreeCases {
   static BinaryNode<int> normal() {
     final root = BinaryNode<int>(15);
     final node10 = BinaryNode(10);
+    root.leftChild = node10;
+    node10.leftChild = BinaryNode(5);
+    node10.rightChild = BinaryNode(12);
+    final node25 = BinaryNode(25);
+    root.rightChild = node25;
+    node25.leftChild = BinaryNode(17);
+    return root;
+  }
+
+  static BinaryNode<int> unBalanceTree() {
+    final root = BinaryNode<int>(15);
+    final node10 = BinaryNode(27);
     root.leftChild = node10;
     node10.leftChild = BinaryNode(5);
     node10.rightChild = BinaryNode(12);

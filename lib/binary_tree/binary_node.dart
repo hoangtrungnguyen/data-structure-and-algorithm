@@ -16,13 +16,6 @@ class BinaryNode<T> {
     return _diagram(this);
   }
 
-  List<T?> serialize<T>(BinaryNode<T> node) {
-    final list = <T?>[];
-    node.traversePreOrderWithNull((value) {
-      list.add(value);
-    });
-    return list;
-  }
 
   String _diagram(BinaryNode<T>? node,
       [String top = '', String root = '', String bottom = '']) {
