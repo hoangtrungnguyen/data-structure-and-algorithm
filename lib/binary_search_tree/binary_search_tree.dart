@@ -5,6 +5,10 @@ import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 class BinarySearchTree<E extends Comparable<dynamic>> {
   BinaryNode<E>? root;
 
+  BinarySearchTree();
+
+  BinarySearchTree.root(this.root);
+
   void insert(E value) {
     root ??= BinaryNode(value);
     void helper(BinaryNode<E>? node, E value) {
