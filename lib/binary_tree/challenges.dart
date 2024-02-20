@@ -4,12 +4,13 @@ import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 
 void main() {
   // getHeight(createBinaryTree());
+  print(createBinaryTree());
   // print(serialize(SerializeTreeCases.normal()).map((e) => e.toString()).join(', '));
-  print(deserialize(DeserializeTreeCases.normal()).toString());
+  // print(deserialize(DeserializeTreeCases.normal()).toString());
 }
 
 // 1. Height of the tree
-void getHeight<T>(BinaryNode<T> tree) {
+int getHeight<T>(BinaryNode<T> tree) {
   int helper(BinaryNode<T>? node) {
     if (node == null) {
       return 0;
@@ -19,7 +20,7 @@ void getHeight<T>(BinaryNode<T> tree) {
     return math.max(leftHeight, rightHeight);
   }
 
-  print(helper(tree));
+  return helper(tree);
 }
 
 // 2. Serialization

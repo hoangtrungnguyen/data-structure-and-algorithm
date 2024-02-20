@@ -62,6 +62,18 @@ class BinaryNode<T> {
     rightChild?.traversePostOrder(action);
     action(value);
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BinaryNode &&
+          runtimeType == other.runtimeType &&
+          value == other.value &&
+          leftChild == other.leftChild &&
+          rightChild == other.rightChild;
+
+  @override
+  int get hashCode => value.hashCode ^ leftChild.hashCode ^ rightChild.hashCode;
 }
 
 class XBinaryTraversalAlgorithm<T> {
