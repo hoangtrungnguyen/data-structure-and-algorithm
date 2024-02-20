@@ -32,7 +32,7 @@ TreeNode<int> buildTree() {
     ]);
 }
 
-void printEachLevel<T>(TreeNode<T> tree) {
+String printEachLevel<T>(TreeNode<T> tree) {
   final result = StringBuffer();
 // 1
   var queue = QueueStack<TreeNode<T>>();
@@ -55,7 +55,7 @@ void printEachLevel<T>(TreeNode<T> tree) {
 // 5
     result.write('\n');
   }
-  print(result);
+  return result.toString();
 }
 
 
