@@ -1,6 +1,8 @@
 import 'package:data_structure_and_algorithm/binary_search_tree/binary_search_tree.dart';
 import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 
+
+
 class TreeGenerator{
 
   static BinaryNode<int> createBinaryTree() {

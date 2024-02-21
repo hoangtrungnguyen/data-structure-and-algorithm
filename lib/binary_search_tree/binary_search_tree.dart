@@ -102,29 +102,6 @@ extension _MinFinder<E extends Comparable> on BinaryNode<E> {
   BinaryNode<E> get min => leftChild?.min ?? this;
 }
 
-extension IsBinarySearchTree<E extends Comparable> on BinaryNode<E> {
-  bool isBinarySearchTree() {
-    bool helper(BinaryNode<E>? node, {E? min}) {
-      if (node == null) return true;
-
-      if (node.leftChild == null && node.rightChild == null) return true;
-
-      if (node.leftChild != null &&
-          node.leftChild!.value.compareTo(node.value) > 0) {
-        return false;
-      }
-
-      if (node.rightChild != null &&
-          node.rightChild!.value.compareTo(node.value) < 0) {
-        return false;
-      }
-
-      return helper(node.leftChild, ) && helper(node.rightChild);
-    }
-
-    return helper(this, min: value);
-  }
-}
 
 class IsBinarySearchTreeGenerator {
   static BinaryNode<int> get normalBST {

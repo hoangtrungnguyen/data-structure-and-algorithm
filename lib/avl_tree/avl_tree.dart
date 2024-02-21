@@ -33,7 +33,7 @@ class AvlTree<E extends Comparable<E>> {
     return pivot;
   }
 
-  AvlNode<E> rightRotate(AvlNode<E> node){
+  AvlNode<E> rightRotate(AvlNode<E> node) {
     final pivot = node.leftChild!;
     node.leftChild = pivot.rightChild;
     pivot.rightChild = node;
@@ -42,20 +42,30 @@ class AvlTree<E extends Comparable<E>> {
     return pivot;
   }
 
-  AvlNode<E> rightLeftRotate(AvlNode<E> node){
-    if(node.rightChild == null){
+  AvlNode<E> rightLeftRotate(AvlNode<E> node) {
+    if (node.rightChild == null) {
       return node;
     }
     node.rightChild = rightRotate(node.rightChild!);
     return leftRotate(node);
   }
 
-  AvlNode<E> leftRightRotate(AvlNode<E> node){
-    if(node.leftChild == null){
+  AvlNode<E> leftRightRotate(AvlNode<E> node) {
+    if (node.leftChild == null) {
       return node;
     }
     node.leftChild = leftRotate(node.leftChild!);
     return rightRotate(node);
+  }
+
+  AvlNode<E> balanced(AvlNode<E> node) {
+    switch (node.balanceFactor) {
+      case 2:
+
+      case -2:
+      default:
+        return node;
+    }
   }
 
   void remove(E value) {
