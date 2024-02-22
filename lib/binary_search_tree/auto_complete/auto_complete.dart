@@ -1,5 +1,8 @@
 import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 
+import 'dart:convert';
+import 'dart:io';
+
 class TextNode {
 
   String word;
@@ -95,18 +98,20 @@ class BinarySearchTree {
 void main() {
   var bst = BinarySearchTree();
   bst.insert("hello");
-  bst.insert("hyper");
-  bst.insert("holland");
-  bst.insert("engineer");
   bst.insert("application");
   bst.insert("apple");
-  bst.insert("ant");
-  bst.insert("uncle");
   bst.insert("house");
-  bst.insert("horse");
-  bst.insert("humble");
 
-  print(bst.root);
-  final result = bst.autocomplete('hou');
-  print(result);
+  while(true){
+    print("Enter your key search: ");
+    var line = stdin.readLineSync(encoding: utf8);
+    if(line == 'exit'){
+      exit(0);
+    }
+    final result = bst.autocomplete(line!);
+    print("suggestion");
+    print(result);
+    print('');
+  }
+
 }
