@@ -47,7 +47,7 @@ class TextNode {
 }
 
 
-class BinarySearchTree {
+class AutoCompletionBinarySearchTree {
   TextNode? root;
 
   void insert(String word) {
@@ -96,7 +96,7 @@ class BinarySearchTree {
 }
 
 void main() {
-  var bst = BinarySearchTree();
+  var bst = AutoCompletionBinarySearchTree();
   bst.insert("hello");
   bst.insert("application");
   bst.insert("apple");
