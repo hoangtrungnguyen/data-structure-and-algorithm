@@ -1,11 +1,10 @@
-// import 'package:data_structure_and_algorithm/binary_search_tree/auto_complete/auto_complete.dart';
-//
-// void main(){
-//   final autoComplete = AutoComplete();
-//   autoComplete.insert("Nguyen");
-//   autoComplete.insert("John");
-//   autoComplete.insert("Sam");
-//   autoComplete.insert("Tam");
-//   autoComplete.insert("Le");
-//   print(autoComplete.root);
-// }
+bool compareWordsLexicographically(String word1, String word2) {
+  return word1.compareTo(word2) < 0;
+}
+
+void main() {
+  print(compareWordsLexicographically("humble", "house"));  // True
+  print(compareWordsLexicographically("humble", "house"));  // True
+  print(compareWordsLexicographically("humble", "house"));  // True
+  print(compareWordsLexicographically("hello", "world"));   // False
+}
