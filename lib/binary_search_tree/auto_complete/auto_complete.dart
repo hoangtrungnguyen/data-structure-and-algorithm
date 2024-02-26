@@ -93,25 +93,32 @@ class AutoCompletionBinarySearchTree {
     words.add(node.word);
     _inorderTraversal(node.right, words);
   }
+  @override
+  String toString() {
+    return '$root';
+  }
 }
 
 void main() {
   var bst = AutoCompletionBinarySearchTree();
   bst.insert("hello");
-  bst.insert("application");
-  bst.insert("apple");
-  bst.insert("house");
+  bst.insert("boss");
+  bst.insert("ant");
+  bst.insert("ant1");
+  bst.insert("ant2");
+  bst.insert("ant3");
+  print(bst);
 
-  while(true){
-    print("Enter your key search: ");
-    var line = stdin.readLineSync(encoding: utf8);
-    if(line == 'exit'){
-      exit(0);
-    }
-    final result = bst.autocomplete(line!);
-    print("suggestion");
-    print(result);
-    print('');
-  }
+  // while(true){
+  //   print("Enter your key search: ");
+  //   var line = stdin.readLineSync(encoding: utf8);
+  //   if(line == 'exit'){
+  //     exit(0);
+  //   }
+  //   final result = bst.autocomplete(line!);
+  //   print("suggestion");
+  //   print(result);
+  //   print('');
+  // }
 
 }

@@ -1,5 +1,6 @@
 // Helper function to build trees easily
 import 'package:data_structure_and_algorithm/avl_tree/avl_node.dart';
+import 'package:data_structure_and_algorithm/avl_tree/avl_tree.dart';
 import 'package:data_structure_and_algorithm/queue/queue.dart';
 
 class AVLGenerator {
@@ -23,5 +24,15 @@ class AVLGenerator {
       }
     }
     return root;
+  }
+
+  // Usage:
+  static AvlTree<num> generateBalancedTree(List<int> values) {
+    AvlTree<num> tree = AvlTree<num>();
+    for (int value in values) {
+      tree.insert(value);
+    }
+
+    return tree;
   }
 }

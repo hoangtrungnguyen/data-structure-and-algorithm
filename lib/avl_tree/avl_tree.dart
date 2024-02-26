@@ -21,7 +21,9 @@ class AvlTree<E extends Comparable<E>> {
     } else {
       node.rightChild = _insertAt(node.rightChild, value);
     }
-    return node;
+    final balancedNode = balanced(node);
+    balancedNode.height = 1 + math.max(balancedNode.leftHeight, balancedNode.rightHeight);
+    return balancedNode;
   }
 
   AvlNode<E> leftRotate(AvlNode<E> node) {
@@ -61,8 +63,19 @@ class AvlTree<E extends Comparable<E>> {
   AvlNode<E> balanced(AvlNode<E> node) {
     switch (node.balanceFactor) {
       case 2:
-
+        final left = node.leftChild;
+        if(left != null && left.balanceFactor == -1){
+          return leftRightRotate(node);
+        } else {
+          return rightRotate(node);
+        }
       case -2:
+        final right = node.rightChild;
+        if(right != null && right.balanceFactor == 1){
+          return rightLeftRotate(node);
+        } else {
+         return leftRotate(node);
+        }
       default:
         return node;
     }
@@ -108,6 +121,7 @@ class AvlTree<E extends Comparable<E>> {
     }
     return false;
   }
+
 
   @override
   String toString() => root.toString();
