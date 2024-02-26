@@ -57,6 +57,7 @@ class AvlNode<T> {
   int get rightHeight => this.rightChild?.height ?? -1;
 
   int height = 0;
+
 }
 
 

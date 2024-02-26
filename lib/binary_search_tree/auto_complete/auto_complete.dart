@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' as math;
+
 
 class TextNode {
 
@@ -10,6 +14,13 @@ class TextNode {
   TextNode? right;
 
   TextNode(this.word);
+
+  int get balanceFactor =>  leftHeight - rightHeight;
+
+  int get leftHeight => left?.height ?? -1;
+  int get rightHeight => right?.height ?? -1;
+
+  int height = 0;
 
   @override
   String toString() {
@@ -97,6 +108,28 @@ class AutoCompletionBinarySearchTree {
   String toString() {
     return '$root';
   }
+
+
+  TextNode leftRotate(TextNode node){
+    final pivot = node.right!;
+    node.right = pivot.left;
+    pivot.left = node;
+
+    node.height = 1 + math.max(node.leftHeight, node.rightHeight);
+    pivot.height = 1 + math.max(pivot.leftHeight, node.rightHeight);
+    return pivot;
+  }
+
+  TextNode rightRotate(TextNode node){
+    final pivot = node.left!;
+    node.left = pivot.right;
+    pivot.right = node;
+
+    node.height = 1 + math.max(node.leftHeight, node.rightHeight);
+    pivot.height = 1 + math.max(pivot.leftHeight, node.rightHeight);
+    return pivot;
+  }
+
 }
 
 void main() {
