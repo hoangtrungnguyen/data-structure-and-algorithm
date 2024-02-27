@@ -1,23 +1,16 @@
-import 'dart:math';
-
-import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
-
-import 'dart:convert';
-import 'dart:io';
 import 'dart:math' as math;
 
-
 class TextNode {
-
   String word;
   TextNode? left;
   TextNode? right;
 
   TextNode(this.word);
 
-  int get balanceFactor =>  leftHeight - rightHeight;
+  int get balanceFactor => leftHeight - rightHeight;
 
   int get leftHeight => left?.height ?? -1;
+
   int get rightHeight => right?.height ?? -1;
 
   int height = 0;
@@ -26,7 +19,6 @@ class TextNode {
   String toString() {
     return _diagram(this);
   }
-
 
   String _diagram(TextNode? node,
       [String top = '', String root = '', String bottom = '']) {
@@ -45,7 +37,8 @@ class TextNode {
       '$top│ ',
     );
 
-    final b = '$root${node.word}\n';
+    final b =
+        '$root${node.word}\n';
 
     final c = _diagram(
       node.left,
@@ -56,7 +49,6 @@ class TextNode {
     return '$a$b$c';
   }
 }
-
 
 class AutoCompletionBinarySearchTree {
   TextNode? root;
@@ -69,10 +61,13 @@ class AutoCompletionBinarySearchTree {
     if (node == null) return TextNode(word);
     if (word.compareTo(node.word) < 0) {
       node.left = _insertHelper(node.left, word);
-    } else if(word.compareTo(node.word) > 0) {
+    } else if (word.compareTo(node.word) > 0) {
       node.right = _insertHelper(node.right, word);
     }
-    return node;
+    final balancedNode = balanced(node);
+    balancedNode.height =
+        1 + math.max(balancedNode.leftHeight, balancedNode.rightHeight);
+    return balancedNode;
   }
 
   List<String> autocomplete(String prefix) {
@@ -84,9 +79,9 @@ class AutoCompletionBinarySearchTree {
     if (node == null) return null;
     if (node.word.startsWith(prefix)) return node;
 
-   if (prefix.compareTo(node.word) < 0) {
+    if (prefix.compareTo(node.word) < 0) {
       return _findNodeWithPrefix(node.left, prefix);
-    } else if(prefix.compareTo(node.word) > 0){
+    } else if (prefix.compareTo(node.word) > 0) {
       return _findNodeWithPrefix(node.right, prefix);
     }
     return node;
@@ -99,18 +94,18 @@ class AutoCompletionBinarySearchTree {
   }
 
   void _inorderTraversal(TextNode? node, List<String> words) {
-    if (node == null)  return;
+    if (node == null) return;
     _inorderTraversal(node.left, words);
     words.add(node.word);
     _inorderTraversal(node.right, words);
   }
+
   @override
   String toString() {
     return '$root';
   }
 
-
-  TextNode leftRotate(TextNode node){
+  TextNode leftRotate(TextNode node) {
     final pivot = node.right!;
     node.right = pivot.left;
     pivot.left = node;
@@ -120,7 +115,7 @@ class AutoCompletionBinarySearchTree {
     return pivot;
   }
 
-  TextNode rightRotate(TextNode node){
+  TextNode rightRotate(TextNode node) {
     final pivot = node.left!;
     node.left = pivot.right;
     pivot.right = node;
@@ -130,28 +125,53 @@ class AutoCompletionBinarySearchTree {
     return pivot;
   }
 
+  TextNode rightLeftRotate(TextNode node) {
+    if (node.right == null) return node;
+    node.right = rightRotate(node.right!);
+    return leftRotate(node);
+  }
+
+  TextNode leftRightRotate(TextNode node) {
+    if (node.left == null) return node;
+    node.left = leftRotate(node.left!);
+    return rightRotate(node);
+  }
+
+  TextNode balanced(TextNode node) {
+    switch (node.balanceFactor) {
+      case 2:
+        final left = node.left;
+        if (left != null && left.balanceFactor == -1) {
+          return leftRightRotate(node);
+        } else {
+          return rightRotate(node);
+        }
+      case -2:
+        final right = node.right;
+        if (right != null && right.balanceFactor == 1) {
+          return rightLeftRotate(node);
+        } else {
+          return leftRotate(node);
+        }
+      default:
+        return node;
+    }
+  }
 }
 
 void main() {
   var bst = AutoCompletionBinarySearchTree();
-  bst.insert("hello");
-  bst.insert("boss");
-  bst.insert("ant");
-  bst.insert("ant1");
-  bst.insert("ant2");
-  bst.insert("ant3");
+  bst.insert('5');
+  bst.insert('8');
+  bst.insert('0');
+  bst.insert('9');
+  bst.insert('32');
+  bst.insert("1");
+  bst.insert("13");
+  bst.insert("12");
+  bst.insert("43");
+  bst.insert("76");
+  bst.insert("46");
   print(bst);
-
-  // while(true){
-  //   print("Enter your key search: ");
-  //   var line = stdin.readLineSync(encoding: utf8);
-  //   if(line == 'exit'){
-  //     exit(0);
-  //   }
-  //   final result = bst.autocomplete(line!);
-  //   print("suggestion");
-  //   print(result);
-  //   print('');
-  // }
 
 }
