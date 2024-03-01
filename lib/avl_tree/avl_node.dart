@@ -2,25 +2,33 @@
 // For full license & permission details, see LICENSE.
 import 'dart:math' as math;
 
-class AvlNode<T> {
+import 'package:data_structure_and_algorithm/avl_tree/traversable_binary_node.dart';
+
+class AvlNode<T> extends TraversableBinaryNode {
   AvlNode(this.value);
 
+  @override
   T value;
+  @override
   AvlNode<T>? leftChild;
+  @override
   AvlNode<T>? rightChild;
 
+  @override
   void traverseInOrder(void Function(T value) action) {
     leftChild?.traverseInOrder(action);
     action(value);
     rightChild?.traverseInOrder(action);
   }
 
+  @override
   void traversePreOrder(void Function(T value) action) {
     action(value);
     leftChild?.traversePreOrder(action);
     rightChild?.traversePreOrder(action);
   }
 
+  @override
   void traversePostOrder(void Function(T value) action) {
     leftChild?.traversePostOrder(action);
     rightChild?.traversePostOrder(action);
