@@ -89,4 +89,36 @@ void main() {
       expect(actual, Range(5, 8));
     });
   });
+
+  group('get range using two recursive binary search', (){
+    test("Range start and stop at a same index. Example: Range(2,2)", () {
+      final sortedList = <int>[-2, 0, 1, 2, 4, 6, 7, 9];
+      final actual = sortedList.getRange2(1);
+      expect(actual, Range(2, 2));
+    });
+
+    test("Range start and stop at the middle of the list. Range(2,4)", () {
+      final sortedList = <int>[-2, 0, 1, 1, 1, 1, 2, 4, 6, 7, 9];
+      final actual = sortedList.getRange2(1);
+      expect(actual, Range(2, 5));
+    });
+
+    test("Not found", () {
+      final sortedList = <int>[1, 1, 1, 1, 2, 4, 6, 7, 9];
+      final actual = sortedList.getRange2(12);
+      expect(actual, null);
+    });
+
+    test('Range start from index 0', () {
+      final sortedList = <int>[1, 1, 1, 1, 2, 4, 6, 7, 9];
+      final actual = sortedList.getRange2(1);
+      expect(actual, Range(0, 3));
+    });
+
+    test('Range end at index length - 1', () {
+      final sortedList = <int>[1, 2, 3, 4, 5, 7, 7, 7, 7];
+      final actual = sortedList.getRange2(7);
+      expect(actual, Range(5, 8));
+    });
+  });
 }

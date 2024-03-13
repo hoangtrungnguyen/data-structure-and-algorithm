@@ -31,7 +31,7 @@ extension BinarySearchWhileLoopStyle<E extends Comparable> on List<E> {
     }
     int start = 0;
     int end = length;
-    while ( start < end) {
+    while (start < end) {
       final middle = ((start + end) / 2).floor();
       if (this[middle].compareTo(value) == 0) {
         return middle;
@@ -57,7 +57,7 @@ extension BinarySearchRecursiveStyle<E extends Comparable> on List<E> {
     return true;
   }
 
-  int recursiveBinarySearch(E value){
+  int recursiveBinarySearch(E value) {
     if (!_isSorted()) {
       throw Exception('binary search is for sorted list only');
     }
@@ -66,16 +66,14 @@ extension BinarySearchRecursiveStyle<E extends Comparable> on List<E> {
     return _recursiveBinarySearch(value);
   }
 
-
   int _recursiveBinarySearch(E value, [int? start, int? end]) {
-
     end = end ?? length;
     start = start ?? 0;
     if (start >= end) {
       return -1;
     }
 
-    final middleIndex = ((start + end)/ 2).floor();
+    final middleIndex = ((start + end) / 2).floor();
     final middleValue = this[middleIndex];
     print('start:$start - end:$end');
     print('middle index: $middleIndex');
@@ -83,16 +81,12 @@ extension BinarySearchRecursiveStyle<E extends Comparable> on List<E> {
     if (value.compareTo(middleValue) < 0) {
       return _recursiveBinarySearch(value, start, middleIndex);
     } else if (value.compareTo(middleValue) > 0) {
-      return _recursiveBinarySearch(value, middleIndex + 1, end );
+      return _recursiveBinarySearch(value, middleIndex + 1, end);
     } else {
       return middleIndex;
     }
   }
-
 }
-
-
-
 
 //region Challenge 3: Searching for a Range
 // Write a function that searches a sorted list and finds the range of indices
@@ -132,7 +126,7 @@ extension SearchingForRange<E extends Comparable> on List<E> {
   Range? findRange(E value) {
     final foundIndex = whileLoopBinarySearch(value);
     print('foundIndex: $foundIndex');
-    if(foundIndex == -1) return null;
+    if (foundIndex == -1) return null;
     late int? start;
     late int? end;
 
@@ -141,7 +135,7 @@ extension SearchingForRange<E extends Comparable> on List<E> {
       var lower = this[lowerIndex];
       while (lower == value && lowerIndex >= 0) {
         lowerIndex -= 1;
-        if(lowerIndex < 0) break;
+        if (lowerIndex < 0) break;
         lower = this[lowerIndex];
       }
       start = lowerIndex + 1;
@@ -152,9 +146,9 @@ extension SearchingForRange<E extends Comparable> on List<E> {
     if (foundIndex < length - 1) {
       var upperIndex = foundIndex + 1;
       var upper = this[upperIndex];
-      while (upper == value && upperIndex <=length) {
+      while (upper == value && upperIndex <= length) {
         upperIndex += 1;
-        if(upperIndex >= length) break;
+        if (upperIndex >= length) break;
         upper = this[upperIndex];
       }
       end = upperIndex - 1;
@@ -180,6 +174,55 @@ extension SearchingForRange<E extends Comparable> on List<E> {
 ///
 extension SearchingForRangeUseBinarySearch<E extends Comparable> on List<E> {
   //TODO: Implement this
+  int _startIndex(E value, [int? start, int? end]) {
+    end = end ?? length;
+    start = start ?? 0;
+    if (start >= end) {
+      return -1;
+    }
+
+    final middleIndex = ((start + end) / 2).floor();
+    final middleValue = this[middleIndex];
+    if (value.compareTo(middleValue) < 0) {
+      return _startIndex(value, start, middleIndex);
+    } else if (value.compareTo(middleValue) > 0) {
+      return _startIndex(value, middleIndex + 1, end);
+    } else {
+      if (middleIndex > 0 && this[middleIndex - 1] == middleValue) {
+        return _startIndex(value, start, middleIndex);
+      }
+      return middleIndex;
+    }
+  }
+
+  int _endIndex(E value, [int? start, int? end]) {
+    end = end ?? length;
+    start = start ?? 0;
+    if (start >= end) {
+      return -1;
+    }
+
+    final middleIndex = ((start + end) / 2).floor();
+    final middleValue = this[middleIndex];
+    if (value.compareTo(middleValue) < 0) {
+      return _endIndex(value, start, middleIndex);
+    } else if (value.compareTo(middleValue) > 0) {
+      return _endIndex(value, middleIndex + 1, end);
+    } else {
+      if (middleIndex < length - 1 && this[middleIndex + 1] == middleValue) {
+        return _endIndex(value, middleIndex, end);
+      }
+      return middleIndex;
+    }
+  }
+
+  Range? getRange2(E value, [int? start, int? end]) {
+    final startIndex = _startIndex(value, start, end);
+    final endIndex = _endIndex(value, start, end);
+    return (startIndex == -1 || endIndex == -1)
+        ? null
+        : Range(startIndex, endIndex);
+  }
 }
 
 // end region
