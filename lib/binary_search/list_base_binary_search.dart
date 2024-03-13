@@ -94,7 +94,7 @@ extension BinarySearchRecursiveStyle<E extends Comparable> on List<E> {
 
 
 
-//Challenge 3: Searching for a Range
+//region Challenge 3: Searching for a Range
 // Write a function that searches a sorted list and finds the range of indices
 // for a particular element.
 // You can start by creating a class named Range that holds the start
@@ -129,9 +129,10 @@ class Range {
 }
 
 extension SearchingForRange<E extends Comparable> on List<E> {
-  Range findRange(E value) {
+  Range? findRange(E value) {
     final foundIndex = whileLoopBinarySearch(value);
     print('foundIndex: $foundIndex');
+    if(foundIndex == -1) return null;
     late int? start;
     late int? end;
 
@@ -164,3 +165,21 @@ extension SearchingForRange<E extends Comparable> on List<E> {
     return Range(start, end);
   }
 }
+
+/// Binary search for start index and end index.
+///
+/// ## Find startIndex
+/// example: (found index is the element at the middle in the image below):
+/// [ ... , 1, 2, 2, ... ] is valid
+/// [ ... , 2, 2, 2, ... ] is invalid
+/// [ ... , 1, 2, 2, ... ] is invalid
+/// ## Find endIndex
+/// [ ... , 2, 2, 3, ... ] is valid
+/// [ ... , 2, 2, 2, ... ] is invalid
+/// [ ... , 1, 2, 2, ... ] is invalid
+
+extension SearchingForRangeUseBinarySearch<E extends Comparable> on List<E> {
+
+}
+
+// end region

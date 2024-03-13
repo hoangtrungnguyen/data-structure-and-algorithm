@@ -71,7 +71,11 @@ void main() {
       expect(actual, Range(2, 5));
     });
 
-    test("Not found", () {});
+    test("Not found", () {
+      final sortedList = <int>[1, 1, 1, 1, 2, 4, 6, 7, 9];
+      final actual = sortedList.findRange(12);
+      expect(actual, null);
+    });
 
     test('Range start from index 0', () {
       final sortedList = <int>[1, 1, 1, 1, 2, 4, 6, 7, 9];
