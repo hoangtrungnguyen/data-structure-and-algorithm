@@ -177,9 +177,9 @@ extension SearchingForRange<E extends Comparable> on List<E> {
 /// [ ... , 2, 2, 3, ... ] is valid
 /// [ ... , 2, 2, 2, ... ] is invalid
 /// [ ... , 1, 2, 2, ... ] is invalid
-
+///
 extension SearchingForRangeUseBinarySearch<E extends Comparable> on List<E> {
-
+  //TODO: Implement this
 }
 
 // end region
