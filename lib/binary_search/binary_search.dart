@@ -1,28 +1,23 @@
 extension SortedLis<E extends Comparable<dynamic>> on List<E> {
-
   int? binarySearch(E value, [int? start, int? end]) {
-    late int middleIndex;
-    if(start == null && end == null) {
-      middleIndex = (0 + length) ~/ 2;
-    } else if(start == null){
-      middleIndex = (0 + end!) ~/ 2;
-    } else if(end == null) {
-      middleIndex = (start + length) ~/ 2;
-    } else {
-      if(start <= end){
-        return -1;
-      }
-      middleIndex = (start + end) ~/ 2;
+
+    end = end ?? length;
+    start = start ?? 0;
+    if (start >= end) {
+      return -1;
     }
 
+    final middleIndex = ((start + end)/ 2).floor();
     final middleValue = this[middleIndex];
-    if(value.compareTo(middleValue) < 0 ){
-      return binarySearch(value, start,middleIndex);
-    } else if(value.compareTo(middleValue) > 0 ) {
-      return binarySearch(value, middleIndex,end);
+    print('start:$start - end:$end');
+    print('middle index: $middleIndex');
+    print('middle value: $middleValue');
+    if (value.compareTo(middleValue) < 0) {
+      return binarySearch(value, start, middleIndex);
+    } else if (value.compareTo(middleValue) > 0) {
+      return binarySearch(value, middleIndex + 1, end );
     } else {
       return middleIndex;
     }
   }
-
 }
