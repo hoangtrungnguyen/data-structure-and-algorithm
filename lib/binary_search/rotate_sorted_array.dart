@@ -37,25 +37,37 @@ extension Rotate<T extends Comparable<dynamic>> on List<T> {
   }
 }
 
-// extension FindingValueInNearlyRotatedArray<T extends Comparable<dynamic>>
-//     on List<T> {
-//
-//   T findMinimumInRotatedSortedArr(T value){
-//     int upper = length;
-//     int lower = 0;
-//     int middle = lower + (upper - lower) ~/ 2;
-//     if(this[middle].compareTo(this[middle + 1]) > 0){
-//       lower = middle;
-//     } else if (this[middle].compareTo(this[middle + 1]) < 0){
-//
-//     } else {
-//       return this[middle];
-//     }
-//   }
-// }
+extension FindingValueInNearlyRotatedArray<T extends Comparable<dynamic>>
+    on List<T> {
+
+  T findMinimumInRotatedSortedArr(){
+    int upper = length - 1;
+    int lower = 0;
+    while(lower < upper) {
+      int middle = lower + (upper - lower) ~/2;
+
+      if (middle < upper &&  this[middle].compareTo(this[middle + 1]) > 0) {
+        return this[middle + 1];
+      }
+
+      if (middle > lower && this[middle].compareTo(this[middle - 1]) < 0) {
+        return this[middle];
+      }
+
+      if(this[middle].compareTo(this[lower]) > 0) {
+        lower = middle + 1;
+      } else {
+        upper = middle - 1;
+      }
+    }
+    return this[0];
+  }
+}
 
 void main() {
   final array = [1, 2, 3, 4, 5];
-  final actual = array.rotateReversal(1);
-  print(actual);
+  final actual = array.rotateReversal(3);
+  print('rotated $actual');
+  final min = actual.findMinimumInRotatedSortedArr();
+  print('min: $min');
 }
