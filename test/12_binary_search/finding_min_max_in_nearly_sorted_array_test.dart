@@ -55,29 +55,55 @@ void main() {
     });
   });
 
-  group('finding value in rotated sorted array', () {
-    test('find min in a left rotated array', () {
+  group('finding min value in rotated sorted array', () {
+    test('find min odd rotation times', () {
       final array = [3, 4, 5, 1, 2];
       final actual = array.findMinimumInRotatedSortedArr();
       expect(actual, 1);
     });
-    test("find min in a right rotated array", () {
+    test("find min in even rotation times", () {
       final array = [2, 3, 4, 5, 1];
       final actual = array.findMinimumInRotatedSortedArr();
       expect(actual, 1);
     });
 
-    test('find max in a left rotated array', () {
-      final array = [2, 3, 4, 5, 1];
+
+    test("multiple element have same value", () {
+      final array = [1, 2, 2, 2, 3, 4, 5, 1];
       final actual = array.findMinimumInRotatedSortedArr();
       expect(actual, 1);
     });
-    test("find max in a right rotated array", () {});
 
-    test("multiple element have same value", () {});
+    test("multiple element have same min value", () {
+      final array = [-1, 0, 0, 2, 2, 2, 2, 3, 4, 5, -1];
+      final actual = array.findMinimumInRotatedSortedArr();
+      expect(actual, -1);
+    });
+  });
 
-    test("multiple min elements", () {});
+  group('finding max value in rotated sorted array', () {
+    test('find min odd rotation times', () {
+      final array = [3, 4, 5, 1, 2];
+      final actual = array.findMaxInRotatedSortedArr();
+      expect(actual, 5);
+    });
+    test("find min in even rotation times", () {
+      final array = [2, 3, 4, 5, 1];
+      final actual = array.findMaxInRotatedSortedArr();
+      expect(actual, 5);
+    });
 
-    test("multiple max elements", () {});
+
+    test("multiple element have same value", () {
+      final array = [1, 2, 2, 2, 3, 4, 5, 1, 1, 1];
+      final actual = array.findMaxInRotatedSortedArr();
+      expect(actual, 5);
+    });
+
+    test("multiple element have same min value", () {
+      final array = [-1, 0, 0, 2, 2, 2, 2, 3, 4, 5, -1];
+      final actual = array.findMaxInRotatedSortedArr();
+      expect(actual, 5);
+    });
   });
 }
