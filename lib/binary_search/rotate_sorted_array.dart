@@ -12,7 +12,7 @@ extension Rotate<T extends Comparable<dynamic>> on List<T> {
 
   List<T> rotateReversal(int k) {
     List<T> arr = this;
-    void _reverse(List<T> list, int start, int end) {
+    void reverse(List<T> list, int start, int end) {
       while (start < end) {
         T temp = list[start];
         list[start] = list[end];
@@ -30,9 +30,9 @@ extension Rotate<T extends Comparable<dynamic>> on List<T> {
       r = r + n;
     }
 
-    _reverse(arr, 0, r - 1);
-    _reverse(arr, r, n - 1);
-    _reverse(arr, 0, n - 1);
+    reverse(arr, 0, r - 1);
+    reverse(arr, r, n - 1);
+    reverse(arr, 0, n - 1);
     return arr;
   }
 }

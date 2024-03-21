@@ -1,3 +1,6 @@
+import 'dart:developer';
+part 'is_min_heap.dart';
+
 enum Priority { max, min }
 
 class Heap<E extends Comparable<dynamic>> {
@@ -6,6 +9,15 @@ class Heap<E extends Comparable<dynamic>> {
 
   Heap({List<E>? elements, this.priority = Priority.max}) {
     this.elements = (elements == null) ? [] : elements;
+    _buildHeap();
+  }
+
+  void _buildHeap(){
+    if(isEmpty) return;
+    final start = elements.length ~/2 -1;
+    for(var i = start; i >= 0; i --){
+      _siftDown(i);
+    }
   }
 
   bool get isEmpty => elements.isEmpty;
@@ -47,11 +59,6 @@ class Heap<E extends Comparable<dynamic>> {
     elements[indexB] = temp;
   }
 
-  void insert(E value){
-    elements.add(value);
-    int index = elements.length - 1;
-    _siftUp(index);
-  }
   void _siftUp(int index){
     int child = index;
     int parent = _parentIndex(child);
@@ -60,6 +67,28 @@ class Heap<E extends Comparable<dynamic>> {
         child = parent;
         parent = _parentIndex(child);
     }
+  }
+  void _siftDown(int index){
+    var parent = index;
+    while(true){
+      final leftIndex =_leftChildIndex(parent);
+      final rightIndex = _rightChildIndex(parent);
+      int chosen = _higherPriority(leftIndex, parent);
+      chosen = _higherPriority(rightIndex, chosen);
+      if(chosen == parent){
+        return;
+      }
+      _swapValues(parent, chosen);
+      print('index: $parent');
+      print('  ${this.elements}');
+      parent = chosen;
+    }
+  }
+
+  void insert(E value){
+    elements.add(value);
+    int index = elements.length - 1;
+    _siftUp(index);
   }
 
   E? remove(){
@@ -70,18 +99,43 @@ class Heap<E extends Comparable<dynamic>> {
     return value;
   }
 
-  void _siftDown(int index){
-    var parent = index;
-    while(true){
-      int leftIndex =_leftChildIndex(index);
-      int rightIndex = _rightChildIndex(index);
-      int chosen = _higherPriority(index, leftIndex);
-      chosen = _higherPriority(chosen, rightIndex);
-      if(chosen == parent){
-        return;
-      }
-      _swapValues(parent, chosen);
-      parent = chosen;
-    }
+  E? removeAt(int index){
+    final lastIndex = size - 1 ;
+    if(index < 0 || index > elements.length - 1) return null;
+    if(lastIndex == index) return null;
+    _swapValues(index, lastIndex);
+    final value = elements.removeLast();
+    _siftDown(index);
+    _siftUp(index);
+    return value;
   }
+
+  int indexOf(E value, {int index = 0}){
+    //1
+    if(index < 0 || index >= size){
+      return -1;
+    }
+    //2
+    if(_firstHasHigherPriority(value, elements[index])){
+      return -1;
+    }
+    //3
+    if(value == elements[index]){
+      return index;
+    }
+    //4
+    // 4.a
+    final left = indexOf(value, index:_leftChildIndex(index));
+    // 4.b
+    if(left != -1) return left;
+    // 4.c
+    return indexOf(value, index: _rightChildIndex(index));
+  }
+
+  //CHALLENGE 3
+  void merge(List<E> list){
+    elements.addAll(list);
+    _buildHeap();
+  }
+
 }
