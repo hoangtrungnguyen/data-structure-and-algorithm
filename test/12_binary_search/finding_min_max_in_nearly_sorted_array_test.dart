@@ -1,3 +1,4 @@
+import 'package:data_structure_and_algorithm/binary_search/min_max_in_nearly_sorted_array.dart';
 import 'package:data_structure_and_algorithm/binary_search/rotate_sorted_array.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
