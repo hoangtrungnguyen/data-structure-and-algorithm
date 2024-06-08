@@ -1,6 +1,6 @@
 import 'package:data_structure_and_algorithm/heap_tree/heap.dart';
 
-import 'queue.dart';
+import '../queue/queue.dart';
 
 export 'package:data_structure_and_algorithm/heap_tree/heap.dart' show Priority;
 

@@ -14,7 +14,7 @@ class Heap<E extends Comparable<dynamic>> {
 
   void _buildHeap(){
     if(isEmpty) return;
-    final start = elements.length ~/2 -1;
+    final start = (elements.length ~/2) - 1;
     for(var i = start; i >= 0; i --){
       _siftDown(i);
     }
@@ -79,16 +79,13 @@ class Heap<E extends Comparable<dynamic>> {
         return;
       }
       _swapValues(parent, chosen);
-      print('index: $parent');
-      print('  ${this.elements}');
       parent = chosen;
     }
   }
 
   void insert(E value){
     elements.add(value);
-    int index = elements.length - 1;
-    _siftUp(index);
+    _siftUp(elements.length - 1);
   }
 
   E? remove(){
@@ -100,14 +97,21 @@ class Heap<E extends Comparable<dynamic>> {
   }
 
   E? removeAt(int index){
-    final lastIndex = size - 1 ;
-    if(index < 0 || index > elements.length - 1) return null;
-    if(lastIndex == index) return null;
-    _swapValues(index, lastIndex);
-    final value = elements.removeLast();
+    if (index < 0 || index >= size) return null;
+    if (index == size - 1) return elements.removeLast();
+
+    _swapValues(index, size - 1);
+    final removedValue = elements.removeLast();
+
+    // Try sifting down first
     _siftDown(index);
-    _siftUp(index);
-    return value;
+
+    // If sifting down didn't work, try sifting up
+    if (index > 0 && _higherPriority(index, _parentIndex(index)) == index) {
+      _siftUp(index);
+    }
+
+    return removedValue;
   }
 
   int indexOf(E value, {int index = 0}){
@@ -138,4 +142,14 @@ class Heap<E extends Comparable<dynamic>> {
     _buildHeap();
   }
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Heap &&
+          runtimeType == other.runtimeType &&
+          elements == other.elements &&
+          priority == other.priority;
+
+  @override
+  int get hashCode => elements.hashCode ^ priority.hashCode;
 }
