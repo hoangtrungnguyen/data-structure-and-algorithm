@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/doubly_linked_list.dart';
+import 'package:data_structure_and_algorithm/5_linked_list/doubly_linked_list.dart';
 import 'package:data_structure_and_algorithm/ring_buffer.dart';
 
 abstract class Queue<E> {
