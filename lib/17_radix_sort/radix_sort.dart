@@ -10,7 +10,14 @@ void main() {
 }
 
 
-//Sorting using LSD (least significant digit)
+///Sorting using LSD (least significant digit)
+///Visualize the data to be sorted
+///  13
+// 1345
+//  459
+//   46
+//  500
+//  999
 extension RadixSort on List<int> {
   List<int> radixSort() {
     int base = 10;
@@ -86,7 +93,12 @@ extension Digits on int {
   }
 }
 
-
+/// Sort by Most Significant Digit (MSD)
+/// Visualize the data to be sorted
+/// 431
+/// 123
+/// 1
+/// 33
 extension MsdRadixSort on List<int> {
 
   //get the number of digit of the biggest number in the list
@@ -114,13 +126,9 @@ extension MsdRadixSort on List<int> {
     // store values that have fewer digit than current position
     // EXAMPLE:
     // The data
-    // 38
-    // 13
-    // 13432
-    // 23
-    // 812
-    // The bucket after ROUND 2
-    // The bucket = [13]
+    // [38, 13, 13432, 23, 812]
+    // The bucket after recursive the depth level 2
+    // The priority bucket in depth level 2: [13]
     var priorityBucket = <int>[];
 
     for(var number in list){
