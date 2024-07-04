@@ -24,15 +24,17 @@ List<E> _merge<E extends Comparable<dynamic>>(List<E> listA, List<E> listB) {
   final result = <E>[];
 
   while (indexA < listA.length && indexB < listB.length) {
-    if (listA[indexA].compareTo(listB[indexB]) < 0) {
-      result.add(listA[indexA]);
+    final valueA = listA[indexA];
+    final valueB = listA[indexB];
+    if (valueA.compareTo(valueB) < 0) {
+      result.add(valueA);
       indexA++;
-    } else if (listB[indexB].compareTo(listA[indexA]) < 0) {
-      result.add(listB[indexB]);
+    } else if (valueA.compareTo(valueB) > 0) {
+      result.add(valueB);
       indexB++;
     } else {
-      result.add(listA[indexA]);
-      result.add(listB[indexB]);
+      result.add(valueA);
+      result.add(valueB);
       indexA++;
       indexB++;
     }
