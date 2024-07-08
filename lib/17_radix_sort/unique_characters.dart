@@ -3,7 +3,7 @@ void main(){
   print(uniqueCharacters(words));
 }
 
-int  uniqueCharacters(List<String> words){
+int uniqueCharacters(List<String> words){
   final uniqueChars = <int>{};
   for(final word in words){
      for(final codeUnit in word.codeUnits){

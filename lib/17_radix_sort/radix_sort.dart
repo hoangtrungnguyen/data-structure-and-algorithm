@@ -4,8 +4,8 @@ import 'package:data_structure_and_algorithm/utilities.dart';
 
 void main() {
   print( 1234 ~/ 10);
-  final list = [46, 500, 459, 1345, 13, 999];
-  list.lexicographicalSort();
+  final list = [46, 500, 123, 1342225, 13, 999];
+  list.radixSort();
   print(list);
 }
 
@@ -19,13 +19,13 @@ void main() {
 //  500
 //  999
 extension RadixSort on List<int> {
-  List<int> radixSort() {
+  void radixSort() {
     int base = 10;
-    var done = false;
+    var done = length;
     var place = 1;
-    while(!done) {
+    while( done > 0) {
       // print("---- ROUND $place ----");
-      done = true;
+      done = 0;
 
       final buckets = List.generate(base, (index) => <int>[], growable: false);
       for (final number in this) {
@@ -42,7 +42,7 @@ extension RadixSort on List<int> {
         // If there is any remaining part larger than zero,
         // which means we haven't loop through all the digits
         if(remainingPart ~/ base > 0){
-          done = false;
+          done += 1;
         }
 
       }
@@ -54,8 +54,6 @@ extension RadixSort on List<int> {
       //flatten elements in buckets into single list
       addAll(buckets.expand((element) => element));
     }
-
-    return this;
   }
 }
 
