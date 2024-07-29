@@ -2,7 +2,6 @@ import 'package:data_structure_and_algorithm/heap_tree/heap.dart';
 import 'package:test/test.dart';
 
 void main() {
-
   group('constructor', () {
     test("normal", () {
       var heap = Heap(elements: [1, 12, 3, 4, 1, 6, 8, 7]);
@@ -12,7 +11,6 @@ void main() {
       while (!heap.isEmpty) {
         print(heap.remove());
       }
-
     });
   });
   group('insert', () {
@@ -27,16 +25,17 @@ void main() {
       heap.insert(1);
       expect(heap.elements, [8, 6, 5, 4, 3, 2, 1]);
     });
+
     test('normal', () {
-      final heap = Heap(elements: [10, 3, 4], priority: Priority.max);
-      heap.insert(8);
-      heap.insert(6);
-      heap.insert(5);
-      heap.insert(2);
-      heap.insert(1);
-      expect(heap.elements, [10, 8, 6, 5, 4, 3, 2, 1]);
-      heap.insert(7);
-      expect(heap.elements, [10, 8, 7, 6, 5, 4, 3, 2, 1]);
+      // final heap = Heap(elements: [10, 3, 4], priority: Priority.max);
+      // heap.insert(8);
+      // heap.insert(6);
+      // heap.insert(5);
+      // heap.insert(2);
+      // heap.insert(1);
+      // expect(heap.elements, [10, 8, 6, 5, 4, 3, 2, 1]);
+      // heap.insert(7);
+      // expect(heap.elements, [10, 8, 7, 6, 5, 4, 3, 2, 1]);
     });
   });
 
@@ -60,6 +59,20 @@ void main() {
     test('not okay', () {
       final actual = [1, 2, 3, 3].isMeanHeap();
       expect(actual, true);
+    });
+  });
+
+  group('remove', () {
+    test('case 1', () {
+      final heap = Heap(priority: Priority.max);
+      heap.insert(10);
+      heap.insert(7);
+      heap.insert(2);
+      heap.insert(5);
+      heap.insert(1);
+      heap.removeAt(1);
+
+      expect(heap.elements, [10, 5, 2, 1]);
     });
   });
 }

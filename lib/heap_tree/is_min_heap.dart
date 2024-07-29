@@ -1,5 +1,7 @@
 part of 'heap.dart';
 
+//CHALLENGE 4
+//SELF made
 extension IsMeanHeap<E extends Comparable<dynamic>> on List<E> {
   bool isMeanHeap() {
     if (isEmpty) return false;
@@ -37,6 +39,7 @@ extension IsMeanHeap<E extends Comparable<dynamic>> on List<E> {
   }
 }
 
+//SOLUTION from the book
 bool isMinHeap2<E extends Comparable<dynamic>>(List<E> elements) {
   // 1
   if (elements.isEmpty) return true;

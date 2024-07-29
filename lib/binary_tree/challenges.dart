@@ -5,8 +5,8 @@ import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
 void main() {
   // getHeight(createBinaryTree());
   print(createBinaryTree());
-  // print(serialize(SerializeTreeCases.normal()).map((e) => e.toString()).join(', '));
-  // print(deserialize(DeserializeTreeCases.normal()).toString());
+  print(serialize(SerializeTreeCases.normal()).map((e) => e.toString()).join(', '));
+  print(deserialize(DeserializeTreeCases.normal()).toString());
 }
 
 // 1. Height of the tree
