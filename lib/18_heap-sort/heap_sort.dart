@@ -34,7 +34,6 @@ extension Heapsort<E extends Comparable<dynamic>> on List<E> {
       _siftDown(start: 0, end: end);
     }
 
-
   }
 
   int _leftChildIndex(int parentIndex){
