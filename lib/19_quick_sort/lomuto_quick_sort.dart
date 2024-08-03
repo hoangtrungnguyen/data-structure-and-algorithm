@@ -1,16 +1,9 @@
+import 'package:data_structure_and_algorithm/19_quick_sort/swapper.dart';
+
 void main() {
   final list = [8,3,1,2,4,5,18, 9];
   quicksortLomuto(list, 0, list.length - 1);
   print(list);
-}
-
-extension Swappable<E> on List<E> {
-  void swap(int indexA, int indexB) {
-    if (indexA == indexB) return;
-    final temp = this[indexA];
-    this[indexA] = this[indexB];
-    this[indexB] = temp;
-  }
 }
 
 void quicksortLomuto<E extends Comparable<dynamic>>(
