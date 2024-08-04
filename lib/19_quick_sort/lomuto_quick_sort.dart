@@ -29,3 +29,45 @@ int _pivotIndex<E extends Comparable<dynamic>>(
   list.swap(pivotIndex, high);
   return pivotIndex;
 }
+
+
+
+// QUICK SORT MEDIAN
+void quickSortMedian<E extends Comparable>(List<E> list, int low, int high) {
+  if (low >= high) return;
+  var pivotIndex = _medianOfThree(list, low, high);
+  list.swap(pivotIndex, high);
+  pivotIndex = _partitionLomuto(list, low, high);
+  quicksortLomuto(list, low, pivotIndex - 1);
+  quicksortLomuto(list, pivotIndex + 1, high);
+}
+
+int _medianOfThree<E extends Comparable>(List<E> list, int low, int high) {
+  int center = (low + high) ~/ 2;
+
+  if (list[low].compareTo(list[center]) > 0) {
+    list.swap(low, center);
+  }
+  if (list[low].compareTo(list[high]) > 0) {
+    list.swap(low, high);
+  }
+  if (list[center].compareTo(list[high]) > 0) {
+    list.swap(center, high);
+  }
+
+  return center;
+}
+
+int _partitionLomuto<E extends Comparable<dynamic>>(
+    List<E> list, int low, int high) {
+  var pivotValue = list[high];
+  var pivotIndex = low;
+  for (int i = low; i < high; i++) {
+    if (list[i].compareTo(pivotValue) <= 0) {
+      list.swap(i, pivotIndex);
+      pivotIndex += 1;
+    }
+  }
+  list.swap(pivotIndex, high);
+  return pivotIndex;
+}
