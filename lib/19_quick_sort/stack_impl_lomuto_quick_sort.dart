@@ -25,22 +25,23 @@ class Range {
 
 void quicksortIterateLomuto<E extends Comparable<dynamic>>(
     List<E> list, int low, int high) {
+  //1
   final stackPivot = Stack<Range>();
 
+  //2
   final pivotIndex = _pivotIndex(low, high, list);
+  //2.1
   stackPivot.push(Range(0, pivotIndex));
+  //2.2
   stackPivot.push(Range(pivotIndex + 1, list.length));
   // print('pivot: $pivotIndex');
   // print('round 1 : $list');
 
   while (!stackPivot.isEmpty) {
     final range = stackPivot.pop()!;
-    if (range.start == range.end) {
+    if (range.start >= range.end) {
       continue;
     } else {
-      if(range.start > range.end){
-        continue;
-      }
       final newPivot = _pivotIndex(range.start , range.end - 1, list);
       if (newPivot >= range.start || newPivot <= range.end) {
         stackPivot.push(Range(range.start, newPivot - 1));
