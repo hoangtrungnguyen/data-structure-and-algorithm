@@ -7,11 +7,11 @@ void main() {
   quicksortIterateLomuto(list, 0, list.length - 1);
   print(list);
   print('case 2');
-  final list2 = [2, 2, 2, 1, 1];
+  final list2 = [2,2,2,1,1];
   quicksortIterateLomuto(list2, 0, list2.length - 1);
   print(list2);
   print('case 3');
-  final list3 = [1, 1];
+  final list3 = [1,1];
   quicksortIterateLomuto(list3, 0, list3.length - 1);
   print(list3);
 }
@@ -25,10 +25,8 @@ class Range {
 
 void quicksortIterateLomuto<E extends Comparable<dynamic>>(
     List<E> list, int low, int high) {
-  //1 - Stack
   final stackPivot = Stack<Range>();
 
-  //2 - First range
   final pivotIndex = _pivotIndex(low, high, list);
   stackPivot.push(Range(0, pivotIndex));
   stackPivot.push(Range(pivotIndex + 1, list.length));
@@ -37,10 +35,13 @@ void quicksortIterateLomuto<E extends Comparable<dynamic>>(
 
   while (!stackPivot.isEmpty) {
     final range = stackPivot.pop()!;
-    if (range.start >= range.end) {
+    if (range.start == range.end) {
       continue;
     } else {
-      final newPivot = _pivotIndex(range.start, range.end - 1, list);
+      if(range.start > range.end){
+        continue;
+      }
+      final newPivot = _pivotIndex(range.start , range.end - 1, list);
       if (newPivot >= range.start || newPivot <= range.end) {
         stackPivot.push(Range(range.start, newPivot - 1));
         stackPivot.push(Range(newPivot + 1, range.end));
