@@ -53,6 +53,8 @@ class Edge<T> {
   final double? weight;
 
   Edge(this.source, this.destination, [this.weight]);
+
+
 }
 
 enum EdgeType { directed, undirected }
