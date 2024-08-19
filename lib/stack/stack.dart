@@ -3,6 +3,9 @@ class Stack<E> {
   final List<E> _storage;
 
   bool get isEmpty => _storage.isEmpty;
+
+  bool get isNotEmpty => !isEmpty;
+
   E get peek => _storage.last;
   void push(E value) {
     _storage.add(value);
