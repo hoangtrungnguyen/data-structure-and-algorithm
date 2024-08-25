@@ -54,7 +54,10 @@ class Edge<T> {
 
   Edge(this.source, this.destination, [this.weight]);
 
-
+  @override
+  String toString() {
+    return 'Edge{source: $source, destination: $destination, weight: $weight}';
+  }
 }
 
 enum EdgeType { directed, undirected }
