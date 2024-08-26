@@ -29,10 +29,9 @@ void main() {
   final allPaths = dijkstra.shortestPaths(a);
   print(allPaths);
   print('--- shortest path ---');
-  final path = dijkstra.shortestPath(a,d);
+  final path = dijkstra.shortestPath(a, d);
   print('between: a and d');
   print(path);
-
 }
 
 class Pair<T> implements Comparable<Pair<T>> {
@@ -104,16 +103,29 @@ class Dijkstra<E> {
     Map<Vertex<E>, Pair<E>?>? paths,
   }) {
     final allPaths = paths ?? shortestPaths(source);
-    if(!allPaths.containsKey(destination)) return [];
+    if (!allPaths.containsKey(destination)) return [];
     var current = destination;
     final path = <Vertex<E>>[current];
-    while(current != source){
+    while (current != source) {
       final previous = allPaths[current]?.vertex;
-      if(previous == null) return [];
+      if (previous == null) return [];
       path.add(previous);
       current = previous;
     }
     return path.reversed.toList();
+  }
+
+  Map<Vertex<E>, List<Vertex<E>>> shortestPathsLists(Vertex<E> source) {
+
+    final allPaths = shortestPaths(source);
+
+    final allPathsLists = <Vertex<E>, List<Vertex<E>>>{};
+    for (final vertex in graph.vertices) {
+      final path = shortestPath(source, vertex, paths: allPaths);
+      allPathsLists[vertex] = path;
+    }
+
+    return allPathsLists;
   }
 //final edges = graph.edges(current.vertex!);
 //       for(final e in edges){
