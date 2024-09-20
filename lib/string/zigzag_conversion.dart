@@ -8,43 +8,33 @@ class Solution {
       return s;
     }
     int i = 0;
-    int j = 0;
-    List<String> chars = s.split('');
-    List<List<String>> matrix = List.generate(
-        numRows, (index) => List.generate((s.length / 2).ceil(), (index) => ''));
+    int c = 0;
+    List<String> matrix2 = List.generate(
+        numRows, (index) => '');
     String result = '';
-    while (chars.isNotEmpty) {
+    while (c < s.length) {
       if (i == numRows && i > 1) {
         i -= 2;
-
-        while (chars.isNotEmpty && i >= 0) {
-          j += 1;
-          final char = chars.removeAt(0);
-          matrix[i][j] = char;
+        while (c < s.length && i >= 0) {
+          final char = s[c];
+          c ++;
+          matrix2[i] += char;
           i--;
         }
         i+= 2;
       }
 
-
-      if (chars.isEmpty) {
-        break;
-      }
-      // print('\n${chars[i]}');
-      final char = chars.removeAt(0);
-      matrix[i][j] = char;
-      i++;
-    }
-
-    for (var row in matrix) {
-      for (var element in row) {
-        if(element.isNotEmpty) {
-          result += element;
-        }
+      if(c < s.length) {
+        final char = s[c];
+        c ++;
+        matrix2[i] += char;
+        i++;
       }
     }
-    printMatrix(matrix);
 
+    for (var row in matrix2) {
+      result += row;
+    }
     return result;
   }
 }
@@ -56,7 +46,8 @@ void main() {
   print(Solution().convert('PAYPALISHIRING', 1));
   print(Solution().convert('PAYPALISHIRING', 4));
   print(Solution().convert('P', 4));
-  // print(Solution().convert('PAYPALISHIRING', 10000));
+  print(Solution().convert('PAYPALISHIRINGANDFIGHTINGANDSHOOTING', 4));
+  print(Solution().convert('PAYPALISHIRING', 10000));
 }
 
 // Function to print a matrix
