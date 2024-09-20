@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          include:
+            - bin/json/**  # Include all files within the 'lib' folder
+            - bin/**/cubit/**
+          exclude:
+            - lib/test/
