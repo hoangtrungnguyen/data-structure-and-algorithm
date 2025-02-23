@@ -1,5 +1,5 @@
 import 'package:data_structure_and_algorithm/dsa/5_linked_list/doubly_linked_list.dart';
-import 'package:data_structure_and_algorithm/ring_buffer.dart';
+import 'package:data_structure_and_algorithm/dsa/ring_buffer.dart';
 
 abstract class Queue<E> {
   bool enqueue(E element);
