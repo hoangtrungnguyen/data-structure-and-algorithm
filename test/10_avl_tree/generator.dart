@@ -1,7 +1,7 @@
 // Helper function to build trees easily
-import 'package:data_structure_and_algorithm/avl_tree/avl_node.dart';
-import 'package:data_structure_and_algorithm/avl_tree/avl_tree.dart';
-import 'package:data_structure_and_algorithm/queue/queue.dart';
+import 'package:data_structure_and_algorithm/dsa/avl_tree/avl_node.dart';
+import 'package:data_structure_and_algorithm/dsa/avl_tree/avl_tree.dart';
+import 'package:data_structure_and_algorithm/dsa/queue/queue.dart';
 
 class AVLGenerator {
   static AvlNode<int>? buildTree(List<int> values) {

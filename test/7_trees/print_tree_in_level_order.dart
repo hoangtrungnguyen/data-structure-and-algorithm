@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/tree/challenge_print_each_level.dart';
+import 'package:data_structure_and_algorithm/dsa/tree/challenge_print_each_level.dart';
 import 'package:test/test.dart';
 
 import 'data_generator.dart';

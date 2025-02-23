@@ -1,5 +1,5 @@
-import 'package:data_structure_and_algorithm/16_merge_sort/merge_sort.dart';
-import 'package:data_structure_and_algorithm/17_radix_sort/radix_sort.dart';
+import 'package:data_structure_and_algorithm/dsa/16_merge_sort/merge_sort.dart';
+import 'package:data_structure_and_algorithm/dsa/17_radix_sort/radix_sort.dart';
 import 'package:data_structure_and_algorithm/utilities.dart';
 
 void main(){

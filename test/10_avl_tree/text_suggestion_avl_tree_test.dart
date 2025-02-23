@@ -1,5 +1,5 @@
 
-import 'package:data_structure_and_algorithm/binary_search_tree/auto_complete/auto_complete.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_search_tree/auto_complete/auto_complete.dart';
 import 'package:test/test.dart';
 
 void main(){

@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/15_basic_sorting_algorithm/insertion_sort.dart';
+import 'package:data_structure_and_algorithm/dsa/15_basic_sorting_algorithm/insertion_sort.dart';
 import 'package:test/test.dart';
 
 void main(){

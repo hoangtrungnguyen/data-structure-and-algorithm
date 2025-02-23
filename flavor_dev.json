@@ -1,0 +1,17 @@
+{
+  "FLAVOR": "dev",
+  "VAULT_URL": "https://vault-ebond.ohmidasvn.dev/v1/",
+  "VAULT_USERNAME": "admin",
+  "VAULT_PASSWORD": "Ohmidas@123",
+  "ENV": "dev",
+  "DATABASE_HOST": "192.168.2.207",
+  "DATABASE_USERNAME": "postgres",
+  "DATABASE_PASSWORD": "Ohmidas@123",
+  "SSL_REQUIRED": false,
+  "DATABASE_NAME": "ebond_pos",
+  "DATABASE_PORT": "5432",
+  "STORE_CODE": "768",
+  "STORE_ID": "768",
+  "BASE_URL": "",
+  "API_TOKEN": ""
+}

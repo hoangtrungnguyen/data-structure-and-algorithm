@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/binary_search/list_base_binary_search.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_search/list_base_binary_search.dart';
 import 'package:test/test.dart';
 
 void main() {

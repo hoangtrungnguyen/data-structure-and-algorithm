@@ -1,5 +1,5 @@
-import 'package:data_structure_and_algorithm/14_priority_queue/list_base_priority_queue.dart';
-import 'package:data_structure_and_algorithm/14_priority_queue/priority_queue.dart';
+import 'package:data_structure_and_algorithm/dsa/14_priority_queue/list_base_priority_queue.dart';
+import 'package:data_structure_and_algorithm/dsa/14_priority_queue/priority_queue.dart';
 import 'package:test/test.dart';
 
 void main() {

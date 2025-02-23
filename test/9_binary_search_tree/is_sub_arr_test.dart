@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/binary_search_tree/challenge.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_search_tree/challenge.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,9 +1,9 @@
 
 import 'dart:math';
 
-import 'package:data_structure_and_algorithm/avl_tree/avl_node.dart';
-import 'package:data_structure_and_algorithm/avl_tree/avl_tree.dart';
-import 'package:data_structure_and_algorithm/avl_tree/challenge/number_of_leaves.dart';
+import 'package:data_structure_and_algorithm/dsa/avl_tree/avl_node.dart';
+import 'package:data_structure_and_algorithm/dsa/avl_tree/avl_tree.dart';
+import 'package:data_structure_and_algorithm/dsa/avl_tree/challenge/number_of_leaves.dart';
 import 'package:test/test.dart';
 
 import 'generator.dart';

@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/heap_tree/heap.dart';
+import 'package:data_structure_and_algorithm/dsa/heap_tree/heap.dart';
 import 'package:test/test.dart';
 
 void main() {

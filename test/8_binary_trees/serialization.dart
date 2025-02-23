@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/binary_tree/challenges.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_tree/challenges.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 

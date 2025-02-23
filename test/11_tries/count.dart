@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/tries/string_trie.dart';
+import 'package:data_structure_and_algorithm/dsa/tries/string_trie.dart';
 import 'package:test/test.dart';
 
 void main(){

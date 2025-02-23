@@ -1,6 +1,6 @@
-import 'package:data_structure_and_algorithm/binary_search_tree/binary_search_tree.dart';
-import 'package:data_structure_and_algorithm/binary_search_tree/solution.dart';
-import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_search_tree/binary_search_tree.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_search_tree/solution.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_tree/binary_node.dart';
 import 'package:test/test.dart';
 
 BinaryNode<int> _createNormal() {

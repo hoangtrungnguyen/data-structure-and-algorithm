@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/binary_tree/binary_node.dart';
+import 'package:data_structure_and_algorithm/dsa/binary_tree/binary_node.dart';
 
 class BinaryTreeGenerator {
   static BinaryNode<int> createBinaryTree() {

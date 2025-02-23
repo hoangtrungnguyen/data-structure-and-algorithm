@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:data_structure_and_algorithm/5_linked_list/linked_list.dart';
+import 'package:data_structure_and_algorithm/dsa/5_linked_list/linked_list.dart';
 import 'package:test/test.dart';
 
 void main() {

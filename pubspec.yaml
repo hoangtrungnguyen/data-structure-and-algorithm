@@ -8,6 +8,8 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+  flutter:
+    sdk: flutter
   # path: ^1.8.0
   collection: ^1.18.0
   uuid: ^4.4.2

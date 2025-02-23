@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/18_heap-sort/heap_sort_desending.dart';
+import 'package:data_structure_and_algorithm/dsa/18_heap-sort/heap_sort_desending.dart';
 import 'package:test/test.dart';
 
 void main() {

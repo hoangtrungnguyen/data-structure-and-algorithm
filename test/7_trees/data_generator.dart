@@ -1,4 +1,4 @@
-import 'package:data_structure_and_algorithm/tree/tree_node.dart';
+import 'package:data_structure_and_algorithm/dsa/tree/tree_node.dart';
 
 class DataGenerator {
   static TreeNode<int> buildTree() {
