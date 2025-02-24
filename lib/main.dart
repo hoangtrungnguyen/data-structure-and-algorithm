@@ -1,3 +1,4 @@
+import 'package:data_structure_and_algorithm/pages/sorting_array/sorting_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,15 +19,25 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {}, child: Text("Sorting Array Algorithm")),
-            ElevatedButton(
-                onPressed: () {}, child: Text("Graph Algorithm")),
-          ],
-        ),
+      home: Builder(
+        builder: (BuildContext context) {
+          return Scaffold(
+            body: Column(
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return SortingPage();
+                      }));
+                    },
+                    child: Text("Sorting Array Algorithm")),
+                ElevatedButton(
+                    onPressed: () {}, child: Text("Graph Algorithm")),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

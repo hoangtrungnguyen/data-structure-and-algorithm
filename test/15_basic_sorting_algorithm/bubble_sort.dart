@@ -16,4 +16,13 @@ void main() {
     print(list);
   });
 
+  test('case 1', () {
+    var list = [-23, 12, 5, 2, 1, 7];
+    bubbleSort(list);
+    expect(list, [-23, 1, 2, 5, 7, 12]);
+    print(list);
+  });
+
+
+
 }
