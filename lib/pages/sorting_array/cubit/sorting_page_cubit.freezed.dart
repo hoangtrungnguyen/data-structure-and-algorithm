@@ -20,8 +20,7 @@ mixin _$SortingPageState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)
+    required TResult Function(TypeOfAlgorithm type, List<int> originArray)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,18 +28,14 @@ mixin _$SortingPageState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult? Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,8 +127,7 @@ class _$PageInitialImpl implements _PageInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)
+    required TResult Function(TypeOfAlgorithm type, List<int> originArray)
         loaded,
   }) {
     return initial();
@@ -144,9 +138,7 @@ class _$PageInitialImpl implements _PageInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult? Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
   }) {
     return initial?.call();
   }
@@ -156,9 +148,7 @@ class _$PageInitialImpl implements _PageInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -249,8 +239,7 @@ class _$PageLoadingImpl implements _PageLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)
+    required TResult Function(TypeOfAlgorithm type, List<int> originArray)
         loaded,
   }) {
     return loading();
@@ -261,9 +250,7 @@ class _$PageLoadingImpl implements _PageLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult? Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
   }) {
     return loading?.call();
   }
@@ -273,9 +260,7 @@ class _$PageLoadingImpl implements _PageLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -329,10 +314,7 @@ abstract class _$$PageLoadedImplCopyWith<$Res> {
           _$PageLoadedImpl value, $Res Function(_$PageLoadedImpl) then) =
       __$$PageLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlgorithmStatusState status, AlgorithmState algorithmState});
-
-  $AlgorithmStatusStateCopyWith<$Res> get status;
-  $AlgorithmStateCopyWith<$Res> get algorithmState;
+  $Res call({TypeOfAlgorithm type, List<int> originArray});
 }
 
 /// @nodoc
@@ -348,55 +330,42 @@ class __$$PageLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? algorithmState = null,
+    Object? type = null,
+    Object? originArray = null,
   }) {
     return _then(_$PageLoadedImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AlgorithmStatusState,
-      algorithmState: null == algorithmState
-          ? _value.algorithmState
-          : algorithmState // ignore: cast_nullable_to_non_nullable
-              as AlgorithmState,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TypeOfAlgorithm,
+      originArray: null == originArray
+          ? _value._originArray
+          : originArray // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
-  }
-
-  /// Create a copy of SortingPageState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AlgorithmStatusStateCopyWith<$Res> get status {
-    return $AlgorithmStatusStateCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value));
-    });
-  }
-
-  /// Create a copy of SortingPageState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AlgorithmStateCopyWith<$Res> get algorithmState {
-    return $AlgorithmStateCopyWith<$Res>(_value.algorithmState, (value) {
-      return _then(_value.copyWith(algorithmState: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$PageLoadedImpl implements _PageLoaded {
-  _$PageLoadedImpl({required this.status, required this.algorithmState});
+  _$PageLoadedImpl({required this.type, final List<int> originArray = const []})
+      : _originArray = originArray;
 
   @override
-  final AlgorithmStatusState status;
+  final TypeOfAlgorithm type;
+  final List<int> _originArray;
   @override
-  final AlgorithmState algorithmState;
+  @JsonKey()
+  List<int> get originArray {
+    if (_originArray is EqualUnmodifiableListView) return _originArray;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_originArray);
+  }
 
   @override
   String toString() {
-    return 'SortingPageState.loaded(status: $status, algorithmState: $algorithmState)';
+    return 'SortingPageState.loaded(type: $type, originArray: $originArray)';
   }
 
   @override
@@ -404,13 +373,14 @@ class _$PageLoadedImpl implements _PageLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PageLoadedImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.algorithmState, algorithmState) ||
-                other.algorithmState == algorithmState));
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality()
+                .equals(other._originArray, _originArray));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, algorithmState);
+  int get hashCode => Object.hash(
+      runtimeType, type, const DeepCollectionEquality().hash(_originArray));
 
   /// Create a copy of SortingPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -425,11 +395,10 @@ class _$PageLoadedImpl implements _PageLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)
+    required TResult Function(TypeOfAlgorithm type, List<int> originArray)
         loaded,
   }) {
-    return loaded(status, algorithmState);
+    return loaded(type, originArray);
   }
 
   @override
@@ -437,11 +406,9 @@ class _$PageLoadedImpl implements _PageLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult? Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
   }) {
-    return loaded?.call(status, algorithmState);
+    return loaded?.call(type, originArray);
   }
 
   @override
@@ -449,13 +416,11 @@ class _$PageLoadedImpl implements _PageLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            AlgorithmStatusState status, AlgorithmState algorithmState)?
-        loaded,
+    TResult Function(TypeOfAlgorithm type, List<int> originArray)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(status, algorithmState);
+      return loaded(type, originArray);
     }
     return orElse();
   }
@@ -497,656 +462,15 @@ class _$PageLoadedImpl implements _PageLoaded {
 
 abstract class _PageLoaded implements SortingPageState {
   factory _PageLoaded(
-      {required final AlgorithmStatusState status,
-      required final AlgorithmState algorithmState}) = _$PageLoadedImpl;
+      {required final TypeOfAlgorithm type,
+      final List<int> originArray}) = _$PageLoadedImpl;
 
-  AlgorithmStatusState get status;
-  AlgorithmState get algorithmState;
+  TypeOfAlgorithm get type;
+  List<int> get originArray;
 
   /// Create a copy of SortingPageState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PageLoadedImplCopyWith<_$PageLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$AlgorithmStatusState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() inProgress,
-    required TResult Function() finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? inProgress,
-    TResult? Function()? finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? inProgress,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AlgorithmInitial value) initial,
-    required TResult Function(_AlgorithmInProgress value) inProgress,
-    required TResult Function(_AlgorithmFinished value) finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AlgorithmInitial value)? initial,
-    TResult? Function(_AlgorithmInProgress value)? inProgress,
-    TResult? Function(_AlgorithmFinished value)? finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AlgorithmInitial value)? initial,
-    TResult Function(_AlgorithmInProgress value)? inProgress,
-    TResult Function(_AlgorithmFinished value)? finished,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AlgorithmStatusStateCopyWith<$Res> {
-  factory $AlgorithmStatusStateCopyWith(AlgorithmStatusState value,
-          $Res Function(AlgorithmStatusState) then) =
-      _$AlgorithmStatusStateCopyWithImpl<$Res, AlgorithmStatusState>;
-}
-
-/// @nodoc
-class _$AlgorithmStatusStateCopyWithImpl<$Res,
-        $Val extends AlgorithmStatusState>
-    implements $AlgorithmStatusStateCopyWith<$Res> {
-  _$AlgorithmStatusStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AlgorithmStatusState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$AlgorithmInitialImplCopyWith<$Res> {
-  factory _$$AlgorithmInitialImplCopyWith(_$AlgorithmInitialImpl value,
-          $Res Function(_$AlgorithmInitialImpl) then) =
-      __$$AlgorithmInitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AlgorithmInitialImplCopyWithImpl<$Res>
-    extends _$AlgorithmStatusStateCopyWithImpl<$Res, _$AlgorithmInitialImpl>
-    implements _$$AlgorithmInitialImplCopyWith<$Res> {
-  __$$AlgorithmInitialImplCopyWithImpl(_$AlgorithmInitialImpl _value,
-      $Res Function(_$AlgorithmInitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AlgorithmStatusState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$AlgorithmInitialImpl extends _AlgorithmInitial {
-  _$AlgorithmInitialImpl() : super._();
-
-  @override
-  String toString() {
-    return 'AlgorithmStatusState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AlgorithmInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() inProgress,
-    required TResult Function() finished,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? inProgress,
-    TResult? Function()? finished,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? inProgress,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AlgorithmInitial value) initial,
-    required TResult Function(_AlgorithmInProgress value) inProgress,
-    required TResult Function(_AlgorithmFinished value) finished,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AlgorithmInitial value)? initial,
-    TResult? Function(_AlgorithmInProgress value)? inProgress,
-    TResult? Function(_AlgorithmFinished value)? finished,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AlgorithmInitial value)? initial,
-    TResult Function(_AlgorithmInProgress value)? inProgress,
-    TResult Function(_AlgorithmFinished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AlgorithmInitial extends AlgorithmStatusState {
-  factory _AlgorithmInitial() = _$AlgorithmInitialImpl;
-  _AlgorithmInitial._() : super._();
-}
-
-/// @nodoc
-abstract class _$$AlgorithmInProgressImplCopyWith<$Res> {
-  factory _$$AlgorithmInProgressImplCopyWith(_$AlgorithmInProgressImpl value,
-          $Res Function(_$AlgorithmInProgressImpl) then) =
-      __$$AlgorithmInProgressImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AlgorithmInProgressImplCopyWithImpl<$Res>
-    extends _$AlgorithmStatusStateCopyWithImpl<$Res, _$AlgorithmInProgressImpl>
-    implements _$$AlgorithmInProgressImplCopyWith<$Res> {
-  __$$AlgorithmInProgressImplCopyWithImpl(_$AlgorithmInProgressImpl _value,
-      $Res Function(_$AlgorithmInProgressImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AlgorithmStatusState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$AlgorithmInProgressImpl extends _AlgorithmInProgress {
-  _$AlgorithmInProgressImpl() : super._();
-
-  @override
-  String toString() {
-    return 'AlgorithmStatusState.inProgress()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AlgorithmInProgressImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() inProgress,
-    required TResult Function() finished,
-  }) {
-    return inProgress();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? inProgress,
-    TResult? Function()? finished,
-  }) {
-    return inProgress?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? inProgress,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (inProgress != null) {
-      return inProgress();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AlgorithmInitial value) initial,
-    required TResult Function(_AlgorithmInProgress value) inProgress,
-    required TResult Function(_AlgorithmFinished value) finished,
-  }) {
-    return inProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AlgorithmInitial value)? initial,
-    TResult? Function(_AlgorithmInProgress value)? inProgress,
-    TResult? Function(_AlgorithmFinished value)? finished,
-  }) {
-    return inProgress?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AlgorithmInitial value)? initial,
-    TResult Function(_AlgorithmInProgress value)? inProgress,
-    TResult Function(_AlgorithmFinished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (inProgress != null) {
-      return inProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AlgorithmInProgress extends AlgorithmStatusState {
-  factory _AlgorithmInProgress() = _$AlgorithmInProgressImpl;
-  _AlgorithmInProgress._() : super._();
-}
-
-/// @nodoc
-abstract class _$$AlgorithmFinishedImplCopyWith<$Res> {
-  factory _$$AlgorithmFinishedImplCopyWith(_$AlgorithmFinishedImpl value,
-          $Res Function(_$AlgorithmFinishedImpl) then) =
-      __$$AlgorithmFinishedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AlgorithmFinishedImplCopyWithImpl<$Res>
-    extends _$AlgorithmStatusStateCopyWithImpl<$Res, _$AlgorithmFinishedImpl>
-    implements _$$AlgorithmFinishedImplCopyWith<$Res> {
-  __$$AlgorithmFinishedImplCopyWithImpl(_$AlgorithmFinishedImpl _value,
-      $Res Function(_$AlgorithmFinishedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AlgorithmStatusState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$AlgorithmFinishedImpl extends _AlgorithmFinished {
-  _$AlgorithmFinishedImpl() : super._();
-
-  @override
-  String toString() {
-    return 'AlgorithmStatusState.finished()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AlgorithmFinishedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() inProgress,
-    required TResult Function() finished,
-  }) {
-    return finished();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? inProgress,
-    TResult? Function()? finished,
-  }) {
-    return finished?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? inProgress,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (finished != null) {
-      return finished();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AlgorithmInitial value) initial,
-    required TResult Function(_AlgorithmInProgress value) inProgress,
-    required TResult Function(_AlgorithmFinished value) finished,
-  }) {
-    return finished(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AlgorithmInitial value)? initial,
-    TResult? Function(_AlgorithmInProgress value)? inProgress,
-    TResult? Function(_AlgorithmFinished value)? finished,
-  }) {
-    return finished?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AlgorithmInitial value)? initial,
-    TResult Function(_AlgorithmInProgress value)? inProgress,
-    TResult Function(_AlgorithmFinished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (finished != null) {
-      return finished(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AlgorithmFinished extends AlgorithmStatusState {
-  factory _AlgorithmFinished() = _$AlgorithmFinishedImpl;
-  _AlgorithmFinished._() : super._();
-}
-
-/// @nodoc
-mixin _$AlgorithmState {
-  int get length => throw _privateConstructorUsedError;
-  int get maxValue => throw _privateConstructorUsedError;
-  List<int> get array => throw _privateConstructorUsedError;
-  int get selectedIndex => throw _privateConstructorUsedError;
-  int get selectedIndex2 => throw _privateConstructorUsedError;
-
-  /// Create a copy of AlgorithmState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AlgorithmStateCopyWith<AlgorithmState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AlgorithmStateCopyWith<$Res> {
-  factory $AlgorithmStateCopyWith(
-          AlgorithmState value, $Res Function(AlgorithmState) then) =
-      _$AlgorithmStateCopyWithImpl<$Res, AlgorithmState>;
-  @useResult
-  $Res call(
-      {int length,
-      int maxValue,
-      List<int> array,
-      int selectedIndex,
-      int selectedIndex2});
-}
-
-/// @nodoc
-class _$AlgorithmStateCopyWithImpl<$Res, $Val extends AlgorithmState>
-    implements $AlgorithmStateCopyWith<$Res> {
-  _$AlgorithmStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AlgorithmState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? length = null,
-    Object? maxValue = null,
-    Object? array = null,
-    Object? selectedIndex = null,
-    Object? selectedIndex2 = null,
-  }) {
-    return _then(_value.copyWith(
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxValue: null == maxValue
-          ? _value.maxValue
-          : maxValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      array: null == array
-          ? _value.array
-          : array // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      selectedIndex: null == selectedIndex
-          ? _value.selectedIndex
-          : selectedIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      selectedIndex2: null == selectedIndex2
-          ? _value.selectedIndex2
-          : selectedIndex2 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$AlgorithmStateImplCopyWith<$Res>
-    implements $AlgorithmStateCopyWith<$Res> {
-  factory _$$AlgorithmStateImplCopyWith(_$AlgorithmStateImpl value,
-          $Res Function(_$AlgorithmStateImpl) then) =
-      __$$AlgorithmStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int length,
-      int maxValue,
-      List<int> array,
-      int selectedIndex,
-      int selectedIndex2});
-}
-
-/// @nodoc
-class __$$AlgorithmStateImplCopyWithImpl<$Res>
-    extends _$AlgorithmStateCopyWithImpl<$Res, _$AlgorithmStateImpl>
-    implements _$$AlgorithmStateImplCopyWith<$Res> {
-  __$$AlgorithmStateImplCopyWithImpl(
-      _$AlgorithmStateImpl _value, $Res Function(_$AlgorithmStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AlgorithmState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? length = null,
-    Object? maxValue = null,
-    Object? array = null,
-    Object? selectedIndex = null,
-    Object? selectedIndex2 = null,
-  }) {
-    return _then(_$AlgorithmStateImpl(
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxValue: null == maxValue
-          ? _value.maxValue
-          : maxValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      array: null == array
-          ? _value._array
-          : array // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      selectedIndex: null == selectedIndex
-          ? _value.selectedIndex
-          : selectedIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      selectedIndex2: null == selectedIndex2
-          ? _value.selectedIndex2
-          : selectedIndex2 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AlgorithmStateImpl implements _AlgorithmState {
-  _$AlgorithmStateImpl(
-      {this.length = 10,
-      this.maxValue = 100,
-      final List<int> array = const [],
-      this.selectedIndex = 0,
-      this.selectedIndex2 = 0})
-      : _array = array;
-
-  @override
-  @JsonKey()
-  final int length;
-  @override
-  @JsonKey()
-  final int maxValue;
-  final List<int> _array;
-  @override
-  @JsonKey()
-  List<int> get array {
-    if (_array is EqualUnmodifiableListView) return _array;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_array);
-  }
-
-  @override
-  @JsonKey()
-  final int selectedIndex;
-  @override
-  @JsonKey()
-  final int selectedIndex2;
-
-  @override
-  String toString() {
-    return 'AlgorithmState(length: $length, maxValue: $maxValue, array: $array, selectedIndex: $selectedIndex, selectedIndex2: $selectedIndex2)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AlgorithmStateImpl &&
-            (identical(other.length, length) || other.length == length) &&
-            (identical(other.maxValue, maxValue) ||
-                other.maxValue == maxValue) &&
-            const DeepCollectionEquality().equals(other._array, _array) &&
-            (identical(other.selectedIndex, selectedIndex) ||
-                other.selectedIndex == selectedIndex) &&
-            (identical(other.selectedIndex2, selectedIndex2) ||
-                other.selectedIndex2 == selectedIndex2));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      length,
-      maxValue,
-      const DeepCollectionEquality().hash(_array),
-      selectedIndex,
-      selectedIndex2);
-
-  /// Create a copy of AlgorithmState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AlgorithmStateImplCopyWith<_$AlgorithmStateImpl> get copyWith =>
-      __$$AlgorithmStateImplCopyWithImpl<_$AlgorithmStateImpl>(
-          this, _$identity);
-}
-
-abstract class _AlgorithmState implements AlgorithmState {
-  factory _AlgorithmState(
-      {final int length,
-      final int maxValue,
-      final List<int> array,
-      final int selectedIndex,
-      final int selectedIndex2}) = _$AlgorithmStateImpl;
-
-  @override
-  int get length;
-  @override
-  int get maxValue;
-  @override
-  List<int> get array;
-  @override
-  int get selectedIndex;
-  @override
-  int get selectedIndex2;
-
-  /// Create a copy of AlgorithmState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AlgorithmStateImplCopyWith<_$AlgorithmStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
