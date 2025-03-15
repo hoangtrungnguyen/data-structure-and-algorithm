@@ -20,31 +20,29 @@ class SortingPage extends StatelessWidget {
             builder: (BuildContext context) {
               return Stack(
                 children: [
-                  Expanded(
-                    child: BlocBuilder<SortingPageCubit, SortingPageState>(
-                      builder: (context, state) {
-                        return state.whenOrNull(initial: () {
-                              return Center(
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      context
-                                          .read<SortingPageCubit>()
-                                          .add(GenerateArrayEvent());
-                                    },
-                                    child: Text("Generate Array")),
-                              );
-                            }, loading: () {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }, loaded: (_, __) {
-                              return SizedBox();
-                            }) ??
-                            Center(child: Text("error"));
-                      },
-                    ),
+                  BlocBuilder<SortingPageCubit, SortingPageState>(
+                    builder: (context, state) {
+                      return state.whenOrNull(initial: () {
+                            return Center(
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    context
+                                        .read<SortingPageCubit>()
+                                        .add(GenerateArrayEvent());
+                                  },
+                                  child: Text("Generate Array")),
+                            );
+                          }, loading: () {
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }, loaded: (_, __) {
+                            return SizedBox();
+                          }) ??
+                          Center(child: Text("error"));
+                    },
                   ),
-                  Expanded(child: AlgorithmWidget())
+                  AlgorithmWidget()
                 ],
               );
             },
@@ -81,6 +79,7 @@ class AlgorithmWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: array.mapIndexed((index, value) {
+                final color = _setSelectedColor(index, data.selectedIndex, data.selectedIndex2);
                 return MouseRegion(
                   onHover: (_) {
                     if (unit < 12) {}
@@ -89,7 +88,7 @@ class AlgorithmWidget extends StatelessWidget {
                       width: unit,
                       height: heightUnit * value,
                       margin: EdgeInsets.symmetric(horizontal: 12),
-                      color: Colors.blue,
+                      color: color,
                       alignment: Alignment.topCenter,
                       child: Text(
                         '$value',
@@ -102,5 +101,15 @@ class AlgorithmWidget extends StatelessWidget {
         },
       );
     });
+  }
+
+  Color _setSelectedColor(int index, int selectedIndex, int selectedIndex2) {
+    if(index == selectedIndex ){
+      return Colors.red;
+    } else if(index == selectedIndex2){
+      return Colors.orangeAccent;
+    } else {
+      return Colors.blue;
+    }
   }
 }

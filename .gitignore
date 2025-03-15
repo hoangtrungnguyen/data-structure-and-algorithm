@@ -5,3 +5,8 @@
 
 # FVM Version Cache
 .fvm/
+build/
+pubspec.lock
+.metadata
+.idea/
+data-structure-and-algorithm.iml
