@@ -29,13 +29,14 @@ class SortingPageBloc extends Bloc<SortingPageEvent, SortingPageState> {
     GenerateArrayEvent event,
     Emitter<SortingPageState> emit,
   ) async {
-    // AlgorithmState algorithmState = AlgorithmState();
-    // algorithmState = algorithmState.copyWith(
-    //     array: List.generate(algorithmState.length, (_) {
-    //   return Random().nextInt(algorithmState.maxValue);
-    // }));
+    late final TypeOfAlgorithm type;
+    if (state is! _PageLoaded) {
+      type = TypeOfAlgorithm.bubble;
+    } else {
+      type = (state as _PageLoaded).type;
+    }
     final loaded = SortingPageState.loaded(
-        type: TypeOfAlgorithm.bubble,
+        type: type,
         originArray: List.generate(50, (_) {
           return Random().nextInt(100);
         }));
@@ -43,116 +44,12 @@ class SortingPageBloc extends Bloc<SortingPageEvent, SortingPageState> {
     emit(loaded);
   }
 
-  //
-  // Future bubbleSort() async {
-  //   if (state is _Initial) return;
-  //   final loaded = state as _Loaded;
-  //   List<int> list = List.of(loaded.array);
-  //
-  //   for (int i = 0; i < list.length - 1; i++) {
-  //     var swapped = false;
-  //     for (int j = 0; j < list.length - 1; j++) {
-  //       if (list[j].compareTo(list[j + 1]) > 0) {
-  //         await Future.delayed(const Duration(milliseconds: 300));
-  //         list.swap(j, j + 1);
-  //         emit(loaded.copyWith(array: List.of(list)));
-  //         swapped = true;
-  //       }
-  //     }
-  //     if(!swapped) return;
-  //   }
-  // }
-
-  // FutureOr<void> _onStartSortingEvent(
-  //     StartSortingEvent event, Emitter<SortingPageState> emit) async {
-  //   // if (state is! _PageLoaded) return;
-  //   final algorithmState = state.whenOrNull(loaded: (_, __, algorithmState) {
-  //     return algorithmState;
-  //   });
-  //   final type = state.whenOrNull(loaded: (type, __, ___) {
-  //     return type;
-  //   });
-  //   if (algorithmState == null || type == null) {
-  //     return;
-  //   }
-  //
-  //   switch (type) {
-  //     case TypeOfAlgorithm.bubble:
-  //       await _bubbleSort(algorithmState, emit);
-  //     case TypeOfAlgorithm.selection:
-  //       await _selectionSort(algorithmState, emit);
-  //     default:
-  //       throw UnimplementedError("Unimplemented algorithm");
-  //   }
-  // }
-  //
-  // AlgorithmState _chooseIndexAndSwap(
-  //     AlgorithmState algorithmState, List<int> list, int index) {
-  //   list.swap(index, index + 1);
-  //   final algoState = algorithmState;
-  //   return algoState.copyWith(
-  //     array: List.of(list),
-  //     selectedIndex: index,
-  //     selectedIndex2: index + 1,
-  //   );
-  // }
-  //
-  // Future _bubbleSort(
-  //     AlgorithmState algorithmState, Emitter<SortingPageState> emit) async {
-  //   List<int> list = List.of(algorithmState.array);
-  //   for (int i = 0; i < list.length - 1; i++) {
-  //     var swapped = false;
-  //     for (int j = 0; j < list.length - 1; j++) {
-  //       if (list[j].compareTo(list[j + 1]) > 0) {
-  //         final newAlgoState = _chooseIndexAndSwap(algorithmState, list, j);
-  //         emit(SortingPageState.loaded(
-  //           type: TypeOfAlgorithm.bubble,
-  //           status: AlgorithmStatusState.inProgress(),
-  //           algorithmState: newAlgoState,
-  //         ));
-  //         await Future.delayed(const Duration(milliseconds: 300));
-  //         emit(SortingPageState.loaded(
-  //           type: TypeOfAlgorithm.bubble,
-  //           status: AlgorithmStatusState.inProgress(),
-  //           algorithmState:
-  //               newAlgoState.copyWith(selectedIndex: j + 1, selectedIndex2: j),
-  //         ));
-  //         await Future.delayed(const Duration(milliseconds: 300));
-  //         swapped = true;
-  //       }
-  //     }
-  //     if (!swapped) return;
-  //   }
-  // }
-  //
-  // Future _selectionSort(
-  //     AlgorithmState algorithmState, Emitter<SortingPageState> emit) async {
-  //   List<int> list = List.of(algorithmState.array);
-  //   for (int i = 0; i < list.length; i++) {
-  //     int smallest = list[i];
-  //     int smallestIndex = -1;
-  //
-  //     for (int j = i + 1; j < list.length; j++) {
-  //       if (list[j] < smallest) {
-  //         smallestIndex = j;
-  //         smallest = list[j];
-  //       }
-  //     }
-  //     if (smallestIndex != -1) {
-  //       list.swap(smallestIndex, i);
-  //     }
-  //   }
-  //
-  //   emit(SortingPageState.loaded(
-  //       type: TypeOfAlgorithm.selection,
-  //       status: AlgorithmStatusState.inProgress(),
-  //       algorithmState: algorithmState.copyWith(array: list)));
-  // }
-
   FutureOr<void> _onSelectAlgorithmEvent(
       SelectAlgorithmEvent event, Emitter<SortingPageState> emit) async {
     if (state is! _PageLoaded) return;
     final loaded = state as _PageLoaded;
-    emit(loaded.copyWith(type: event.type));
+    emit(loaded.copyWith(
+      type: event.type,
+    ));
   }
 }

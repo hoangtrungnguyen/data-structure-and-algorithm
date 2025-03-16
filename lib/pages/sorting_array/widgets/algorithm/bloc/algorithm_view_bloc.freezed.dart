@@ -18,21 +18,28 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AlgorithmViewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
     required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
     required TResult Function() cancel,
     required TResult Function() finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
     TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult? Function()? cancel,
     TResult? Function()? finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
     TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult Function()? cancel,
     TResult Function()? finished,
     required TResult orElse(),
@@ -40,21 +47,27 @@ mixin _$AlgorithmViewEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_Finished value) finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_Finished value)? finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
@@ -81,6 +94,166 @@ class _$AlgorithmViewEventCopyWithImpl<$Res, $Val extends AlgorithmViewEvent>
 
   /// Create a copy of AlgorithmViewEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$InitializedImplCopyWith<$Res> {
+  factory _$$InitializedImplCopyWith(
+          _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
+      __$$InitializedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TickerProvider vsync});
+}
+
+/// @nodoc
+class __$$InitializedImplCopyWithImpl<$Res>
+    extends _$AlgorithmViewEventCopyWithImpl<$Res, _$InitializedImpl>
+    implements _$$InitializedImplCopyWith<$Res> {
+  __$$InitializedImplCopyWithImpl(
+      _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vsync = null,
+  }) {
+    return _then(_$InitializedImpl(
+      vsync: null == vsync
+          ? _value.vsync
+          : vsync // ignore: cast_nullable_to_non_nullable
+              as TickerProvider,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitializedImpl implements _Initialized {
+  const _$InitializedImpl({required this.vsync});
+
+  @override
+  final TickerProvider vsync;
+
+  @override
+  String toString() {
+    return 'AlgorithmViewEvent.initialized(vsync: $vsync)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitializedImpl &&
+            (identical(other.vsync, vsync) || other.vsync == vsync));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, vsync);
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
+      __$$InitializedImplCopyWithImpl<_$InitializedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
+    required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
+    required TResult Function() cancel,
+    required TResult Function() finished,
+  }) {
+    return initialized(vsync);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
+    TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
+    TResult? Function()? cancel,
+    TResult? Function()? finished,
+  }) {
+    return initialized?.call(vsync);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
+    TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
+    TResult Function()? cancel,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(vsync);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
+    required TResult Function(_Cancel value) cancel,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return initialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
+    TResult? Function(_Cancel value)? cancel,
+    TResult? Function(_Finished value)? finished,
+  }) {
+    return initialized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
+    TResult Function(_Cancel value)? cancel,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialized implements AlgorithmViewEvent {
+  const factory _Initialized({required final TickerProvider vsync}) =
+      _$InitializedImpl;
+
+  TickerProvider get vsync;
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -124,7 +297,10 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
     required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
     required TResult Function() cancel,
     required TResult Function() finished,
   }) {
@@ -134,7 +310,9 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
     TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult? Function()? cancel,
     TResult? Function()? finished,
   }) {
@@ -144,7 +322,9 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
     TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult Function()? cancel,
     TResult Function()? finished,
     required TResult orElse(),
@@ -158,7 +338,9 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_Finished value) finished,
   }) {
@@ -168,7 +350,9 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_Finished value)? finished,
   }) {
@@ -178,7 +362,9 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
@@ -192,6 +378,187 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements AlgorithmViewEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$SwappedImplCopyWith<$Res> {
+  factory _$$SwappedImplCopyWith(
+          _$SwappedImpl value, $Res Function(_$SwappedImpl) then) =
+      __$$SwappedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index1, int index2, TickerProvider vsync});
+}
+
+/// @nodoc
+class __$$SwappedImplCopyWithImpl<$Res>
+    extends _$AlgorithmViewEventCopyWithImpl<$Res, _$SwappedImpl>
+    implements _$$SwappedImplCopyWith<$Res> {
+  __$$SwappedImplCopyWithImpl(
+      _$SwappedImpl _value, $Res Function(_$SwappedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index1 = null,
+    Object? index2 = null,
+    Object? vsync = null,
+  }) {
+    return _then(_$SwappedImpl(
+      index1: null == index1
+          ? _value.index1
+          : index1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      index2: null == index2
+          ? _value.index2
+          : index2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      vsync: null == vsync
+          ? _value.vsync
+          : vsync // ignore: cast_nullable_to_non_nullable
+              as TickerProvider,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwappedImpl implements _Swapped {
+  const _$SwappedImpl(
+      {required this.index1, required this.index2, required this.vsync});
+
+  @override
+  final int index1;
+  @override
+  final int index2;
+  @override
+  final TickerProvider vsync;
+
+  @override
+  String toString() {
+    return 'AlgorithmViewEvent.swapped(index1: $index1, index2: $index2, vsync: $vsync)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SwappedImpl &&
+            (identical(other.index1, index1) || other.index1 == index1) &&
+            (identical(other.index2, index2) || other.index2 == index2) &&
+            (identical(other.vsync, vsync) || other.vsync == vsync));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index1, index2, vsync);
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SwappedImplCopyWith<_$SwappedImpl> get copyWith =>
+      __$$SwappedImplCopyWithImpl<_$SwappedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
+    required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
+    required TResult Function() cancel,
+    required TResult Function() finished,
+  }) {
+    return swapped(index1, index2, vsync);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
+    TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
+    TResult? Function()? cancel,
+    TResult? Function()? finished,
+  }) {
+    return swapped?.call(index1, index2, vsync);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
+    TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
+    TResult Function()? cancel,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (swapped != null) {
+      return swapped(index1, index2, vsync);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
+    required TResult Function(_Cancel value) cancel,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return swapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
+    TResult? Function(_Cancel value)? cancel,
+    TResult? Function(_Finished value)? finished,
+  }) {
+    return swapped?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
+    TResult Function(_Cancel value)? cancel,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (swapped != null) {
+      return swapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Swapped implements AlgorithmViewEvent {
+  const factory _Swapped(
+      {required final int index1,
+      required final int index2,
+      required final TickerProvider vsync}) = _$SwappedImpl;
+
+  int get index1;
+  int get index2;
+  TickerProvider get vsync;
+
+  /// Create a copy of AlgorithmViewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SwappedImplCopyWith<_$SwappedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -235,7 +602,10 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
     required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
     required TResult Function() cancel,
     required TResult Function() finished,
   }) {
@@ -245,7 +615,9 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
     TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult? Function()? cancel,
     TResult? Function()? finished,
   }) {
@@ -255,7 +627,9 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
     TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult Function()? cancel,
     TResult Function()? finished,
     required TResult orElse(),
@@ -269,7 +643,9 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_Finished value) finished,
   }) {
@@ -279,7 +655,9 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_Finished value)? finished,
   }) {
@@ -289,7 +667,9 @@ class _$CancelImpl implements _Cancel {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
@@ -346,7 +726,10 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(TickerProvider vsync) initialized,
     required TResult Function() started,
+    required TResult Function(int index1, int index2, TickerProvider vsync)
+        swapped,
     required TResult Function() cancel,
     required TResult Function() finished,
   }) {
@@ -356,7 +739,9 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TickerProvider vsync)? initialized,
     TResult? Function()? started,
+    TResult? Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult? Function()? cancel,
     TResult? Function()? finished,
   }) {
@@ -366,7 +751,9 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TickerProvider vsync)? initialized,
     TResult Function()? started,
+    TResult Function(int index1, int index2, TickerProvider vsync)? swapped,
     TResult Function()? cancel,
     TResult Function()? finished,
     required TResult orElse(),
@@ -380,7 +767,9 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_Started value) started,
+    required TResult Function(_Swapped value) swapped,
     required TResult Function(_Cancel value) cancel,
     required TResult Function(_Finished value) finished,
   }) {
@@ -390,7 +779,9 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Started value)? started,
+    TResult? Function(_Swapped value)? swapped,
     TResult? Function(_Cancel value)? cancel,
     TResult? Function(_Finished value)? finished,
   }) {
@@ -400,7 +791,9 @@ class _$FinishedImpl implements _Finished {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_Started value)? started,
+    TResult Function(_Swapped value)? swapped,
     TResult Function(_Cancel value)? cancel,
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
@@ -418,6 +811,10 @@ abstract class _Finished implements AlgorithmViewEvent {
 
 /// @nodoc
 mixin _$AlgorithmViewState {
+  Map<int, AnimationController> get animationControllers =>
+      throw _privateConstructorUsedError;
+  Map<int, Animation<double>> get animations =>
+      throw _privateConstructorUsedError;
   AlgorithmStatusState get status => throw _privateConstructorUsedError;
   AlgorithmState get algorithmState => throw _privateConstructorUsedError;
 
@@ -434,7 +831,11 @@ abstract class $AlgorithmViewStateCopyWith<$Res> {
           AlgorithmViewState value, $Res Function(AlgorithmViewState) then) =
       _$AlgorithmViewStateCopyWithImpl<$Res, AlgorithmViewState>;
   @useResult
-  $Res call({AlgorithmStatusState status, AlgorithmState algorithmState});
+  $Res call(
+      {Map<int, AnimationController> animationControllers,
+      Map<int, Animation<double>> animations,
+      AlgorithmStatusState status,
+      AlgorithmState algorithmState});
 
   $AlgorithmStatusStateCopyWith<$Res> get status;
   $AlgorithmStateCopyWith<$Res> get algorithmState;
@@ -455,10 +856,20 @@ class _$AlgorithmViewStateCopyWithImpl<$Res, $Val extends AlgorithmViewState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? animationControllers = null,
+    Object? animations = null,
     Object? status = null,
     Object? algorithmState = null,
   }) {
     return _then(_value.copyWith(
+      animationControllers: null == animationControllers
+          ? _value.animationControllers
+          : animationControllers // ignore: cast_nullable_to_non_nullable
+              as Map<int, AnimationController>,
+      animations: null == animations
+          ? _value.animations
+          : animations // ignore: cast_nullable_to_non_nullable
+              as Map<int, Animation<double>>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -499,7 +910,11 @@ abstract class _$$AlgorithmViewStateImplCopyWith<$Res>
       __$$AlgorithmViewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AlgorithmStatusState status, AlgorithmState algorithmState});
+  $Res call(
+      {Map<int, AnimationController> animationControllers,
+      Map<int, Animation<double>> animations,
+      AlgorithmStatusState status,
+      AlgorithmState algorithmState});
 
   @override
   $AlgorithmStatusStateCopyWith<$Res> get status;
@@ -520,10 +935,20 @@ class __$$AlgorithmViewStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? animationControllers = null,
+    Object? animations = null,
     Object? status = null,
     Object? algorithmState = null,
   }) {
     return _then(_$AlgorithmViewStateImpl(
+      animationControllers: null == animationControllers
+          ? _value._animationControllers
+          : animationControllers // ignore: cast_nullable_to_non_nullable
+              as Map<int, AnimationController>,
+      animations: null == animations
+          ? _value._animations
+          : animations // ignore: cast_nullable_to_non_nullable
+              as Map<int, Animation<double>>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -540,8 +965,29 @@ class __$$AlgorithmViewStateImplCopyWithImpl<$Res>
 
 class _$AlgorithmViewStateImpl implements _AlgorithmViewState {
   const _$AlgorithmViewStateImpl(
-      {this.status = const AlgorithmStatusState.initial(),
-      required this.algorithmState});
+      {required final Map<int, AnimationController> animationControllers,
+      required final Map<int, Animation<double>> animations,
+      this.status = const AlgorithmStatusState.initial(),
+      required this.algorithmState})
+      : _animationControllers = animationControllers,
+        _animations = animations;
+
+  final Map<int, AnimationController> _animationControllers;
+  @override
+  Map<int, AnimationController> get animationControllers {
+    if (_animationControllers is EqualUnmodifiableMapView)
+      return _animationControllers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_animationControllers);
+  }
+
+  final Map<int, Animation<double>> _animations;
+  @override
+  Map<int, Animation<double>> get animations {
+    if (_animations is EqualUnmodifiableMapView) return _animations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_animations);
+  }
 
   @override
   @JsonKey()
@@ -551,7 +997,7 @@ class _$AlgorithmViewStateImpl implements _AlgorithmViewState {
 
   @override
   String toString() {
-    return 'AlgorithmViewState(status: $status, algorithmState: $algorithmState)';
+    return 'AlgorithmViewState(animationControllers: $animationControllers, animations: $animations, status: $status, algorithmState: $algorithmState)';
   }
 
   @override
@@ -559,13 +1005,22 @@ class _$AlgorithmViewStateImpl implements _AlgorithmViewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AlgorithmViewStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._animationControllers, _animationControllers) &&
+            const DeepCollectionEquality()
+                .equals(other._animations, _animations) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.algorithmState, algorithmState) ||
                 other.algorithmState == algorithmState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, algorithmState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_animationControllers),
+      const DeepCollectionEquality().hash(_animations),
+      status,
+      algorithmState);
 
   /// Create a copy of AlgorithmViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -579,9 +1034,15 @@ class _$AlgorithmViewStateImpl implements _AlgorithmViewState {
 
 abstract class _AlgorithmViewState implements AlgorithmViewState {
   const factory _AlgorithmViewState(
-      {final AlgorithmStatusState status,
+      {required final Map<int, AnimationController> animationControllers,
+      required final Map<int, Animation<double>> animations,
+      final AlgorithmStatusState status,
       required final AlgorithmState algorithmState}) = _$AlgorithmViewStateImpl;
 
+  @override
+  Map<int, AnimationController> get animationControllers;
+  @override
+  Map<int, Animation<double>> get animations;
   @override
   AlgorithmStatusState get status;
   @override
@@ -1139,14 +1600,15 @@ class __$$AlgorithmStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AlgorithmStateImpl implements _AlgorithmState {
-  const _$AlgorithmStateImpl(
+class _$AlgorithmStateImpl extends _AlgorithmState {
+  _$AlgorithmStateImpl(
       {this.length = 10,
       this.maxValue = 100,
       final List<int> array = const [],
       this.selectedIndex = 0,
       this.selectedIndex2 = 0})
-      : _array = array;
+      : _array = array,
+        super._();
 
   @override
   @JsonKey()
@@ -1209,13 +1671,14 @@ class _$AlgorithmStateImpl implements _AlgorithmState {
           this, _$identity);
 }
 
-abstract class _AlgorithmState implements AlgorithmState {
-  const factory _AlgorithmState(
+abstract class _AlgorithmState extends AlgorithmState {
+  factory _AlgorithmState(
       {final int length,
       final int maxValue,
       final List<int> array,
       final int selectedIndex,
       final int selectedIndex2}) = _$AlgorithmStateImpl;
+  _AlgorithmState._() : super._();
 
   @override
   int get length;

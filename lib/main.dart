@@ -1,6 +1,8 @@
 import 'package:data_structure_and_algorithm/pages/sorting_array/sorting_page.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/swap_animation/swap_animation_page.dart';
+
 void main() {
   print("main");
   const baseVaultUrl = String.fromEnvironment('VAULT_URL');
@@ -34,6 +36,14 @@ class MainApp extends StatelessWidget {
                     child: Text("Sorting Array Algorithm")),
                 ElevatedButton(
                     onPressed: () {}, child: Text("Graph Algorithm")),
+
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return SwapAnimationPage();
+                      }));
+                    }, child: Text("Swap Animation")),
               ],
             ),
           );
