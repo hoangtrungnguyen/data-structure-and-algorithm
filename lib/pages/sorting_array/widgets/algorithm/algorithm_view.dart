@@ -1,7 +1,4 @@
-import 'package:collection/collection.dart';
 import 'package:data_structure_and_algorithm/pages/sorting_array/cubit/sorting_page_cubit.dart';
-import 'package:data_structure_and_algorithm/pages/sorting_array/utils.dart';
-import 'package:data_structure_and_algorithm/pages/sorting_array/widgets/algorithm/widget/animated_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

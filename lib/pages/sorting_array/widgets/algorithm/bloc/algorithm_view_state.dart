@@ -3,16 +3,12 @@ part of 'algorithm_view_bloc.dart';
 @freezed
 class AlgorithmViewState with _$AlgorithmViewState {
   const factory AlgorithmViewState({
-    required Map<int, AnimationController> animationControllers,
-    required Map<int, Animation<double>> animations,
     @Default(AlgorithmStatusState.initial()) AlgorithmStatusState status,
     required AlgorithmState algorithmState,
   }) = _AlgorithmViewState;
 
   factory AlgorithmViewState.initial() {
     return AlgorithmViewState(
-        animationControllers: {},
-        animations: {},
         algorithmState: AlgorithmState.initial());
   }
 }

@@ -10,7 +10,7 @@ class AlgorithmViewRow extends StatefulWidget {
   State<AlgorithmViewRow> createState() => _AlgorithmViewRowState();
 }
 
-class _AlgorithmViewRowState extends State<AlgorithmViewRow> with TickerProviderStateMixin {
+class _AlgorithmViewRowState extends State<AlgorithmViewRow>   {
   bool isInIt = false;
 
   @override
@@ -21,7 +21,7 @@ class _AlgorithmViewRowState extends State<AlgorithmViewRow> with TickerProvider
         if (!isInIt) {
           context
               .read<AlgorithmViewBloc>()
-              .add(AlgorithmViewEvent.initialized(vsync: this));
+              .add(AlgorithmViewEvent.initialized());
         }
 
         isInIt = true;
